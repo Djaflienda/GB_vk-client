@@ -7,9 +7,9 @@ Homework for the first quarter at Geek University.
 
 This project shows features learned during the first quarter "UserInterface of iOS Apps":
 
-Autolayout\n
-Navigation between controllers\n
-UITableView\n
-UICollectionView\n
-\n
-...more in the future=)\n
+Autolayout
+Navigation between controllers
+UITableView
+UICollectionView
+
+...more in the future=)
