@@ -3,7 +3,7 @@
 
 Homework for the first quarter at Geek University.
 
-# Basic features
+## Basic features
 
 This project shows features learned during the first quarter "UserInterface of iOS Apps":
 
