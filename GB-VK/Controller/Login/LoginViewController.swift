@@ -61,17 +61,17 @@ class LoginViewController: UIViewController {
         let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
-        
+
         let bottomOffset = CGPoint(x: 0, y: 100)
         scrollView.setContentOffset(bottomOffset, animated: true)
     }
-    
+
     @objc private func keyboardWillBeHidden(_ notification: Notification) {
         logo.transform = .identity
         let contentInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
-        
+
         scrollView.bounds = CGRect(x: 0.0, y: 0.0, width: scrollView.bounds.width, height: scrollView.bounds.height)
     }
     
@@ -80,6 +80,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
+        loginTextField.text = "admin"
+        passwordTextField.text = "123456"
         guard let login = loginTextField.text, !login.isEmpty,
             let password = passwordTextField.text, !password.isEmpty else {return}
         
