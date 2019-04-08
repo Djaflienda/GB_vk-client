@@ -12,32 +12,58 @@ class GroupsViewController: UIViewController {
     
     //MARK: -@IBOutlet
 
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView! {
+        didSet {
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+        }
+    }
     
     //MARK: -Properties
     
-    private var groupsArray = [String]()
+    private var groupsArray: [Group] {
+        var groups = [Group]()
+        for group in allGroups where group.isParticipating {
+            groups.append(group)
+        }
+        return groups
+    }
     
     //MARK: -Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.delegate = self
-        tableView.dataSource = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         title = "Groups"
     }
     
     //MARK: -Handlers
 
-    @IBAction func searchGroupButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func addNewGroupButtonPressed(_ sender: UIBarButtonItem) {
         let destinationVC = storyboard?.instantiateViewController(withIdentifier: "SearchGroupViewController") as! SearchGroupViewController
         navigationController?.pushViewController(destinationVC, animated: true)
     }
+    
+    @IBAction func createNewGroupButtonPressed(_ sender: UIBarButtonItem) {
+        showNewGroupCreationAlert()
+    }
 }
 
-extension GroupsViewController: UITableViewDelegate {}
+extension GroupsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 48.5
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        showNewGroupCreationAlert()
+    }
+}
 
 extension GroupsViewController: UITableViewDataSource {
     
@@ -46,10 +72,9 @@ extension GroupsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
-        
-        //configure cell
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: GroupCell.reusableID,
+                                                 for: indexPath) as! GroupCell
+        cell.configureCell(with: groupsArray[indexPath.row])
         return cell
     }
 }
