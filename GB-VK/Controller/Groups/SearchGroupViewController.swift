@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol UpdateGroupInformation: class {
+    func updateGroupInformation()
+}
+
 class SearchGroupViewController: UIViewController {
 
     //MARK: -@IBOutlet
@@ -22,6 +26,7 @@ class SearchGroupViewController: UIViewController {
     //MARK: -Properties
     
     private var groupsArray = /*[String]()*/ allGroups
+    weak var delegate: UpdateGroupInformation?
     
     //MARK: -Init
     
@@ -60,10 +65,11 @@ extension SearchGroupViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AddNewGroupCell.reusableID, for: indexPath) as! AddNewGroupCell
         cell.configureCell(with: groupsArray[indexPath.row])
+        
+        cell.groupButtonAction = { [unowned self] in
+            allGroups[indexPath.row].isParticipating = !allGroups[indexPath.row].isParticipating
+            self.delegate?.updateGroupInformation()
+        }
         return cell
     }
-}
-
-extension UITableView {
-    
 }

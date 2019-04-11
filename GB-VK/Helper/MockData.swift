@@ -16,7 +16,7 @@ let friends = [
     Friend(profileImage: "friend4", profileName: "Song Bao")
 ]
 
-let allGroups = [
+var allGroups = [
     Group(groupImage: "group0", groupName: "Group0", groupDescription: "Description0", isParticipating: true),
     Group(groupImage: "group1", groupName: "Group1", groupDescription: "Description1", isParticipating: false),
     Group(groupImage: "group2", groupName: "Group2", groupDescription: "Description2", isParticipating: true),

@@ -45,6 +45,7 @@ class GroupsViewController: UIViewController {
 
     @IBAction func addNewGroupButtonPressed(_ sender: UIBarButtonItem) {
         let destinationVC = storyboard?.instantiateViewController(withIdentifier: "SearchGroupViewController") as! SearchGroupViewController
+        destinationVC.delegate = self
         navigationController?.pushViewController(destinationVC, animated: true)
     }
     
@@ -63,6 +64,17 @@ extension GroupsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         showNewGroupCreationAlert()
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            allGroups[indexPath.row].isParticipating = !allGroups[indexPath.row].isParticipating
+            //удалять данные из groupArray чтобы не было ошибки
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        }
+
+    }
 }
 
 extension GroupsViewController: UITableViewDataSource {
@@ -76,5 +88,12 @@ extension GroupsViewController: UITableViewDataSource {
                                                  for: indexPath) as! GroupCell
         cell.configureCell(with: groupsArray[indexPath.row])
         return cell
+    }
+}
+
+extension GroupsViewController: UpdateGroupInformation {
+    
+    func updateGroupInformation() {
+        tableView.reloadData()
     }
 }

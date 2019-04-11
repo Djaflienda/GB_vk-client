@@ -21,9 +21,30 @@ class AddNewGroupCell: UITableViewCell {
     
     static let reusableID = "AddNewGroupCell"
     
+    var groupButtonAction: (() -> ())?
+    
     //MARK: -Init
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.groupButton.addTarget(self, action: #selector(groupButtonTapped), for: .touchUpInside)
+    }
+    
     //MARK: -Handlers
+    
+    @objc func groupButtonTapped() {
+        groupButtonAction?()
+        UIView.animate(withDuration: 0.2) {
+            switch self.groupButton.titleLabel?.text {
+            case "✚":
+                self.removeButtonState()
+            case "✔︎":
+                self.addButtonState()
+            default:break
+            }
+        }
+    }
     
     func configureCell(with data: Group) {
         self.groupImage.image = UIImage(named: data.groupImage)
@@ -32,16 +53,30 @@ class AddNewGroupCell: UITableViewCell {
         configureGroupButton(dependOn: data.isParticipating)
     }
     
+    private func addButtonState() {
+        groupButton.setTitle("✚", for: .normal)
+        groupButton.setTitleColor(UIColor.white, for: .normal)
+        groupButton.backgroundColor = UIColor(red: 113/255, green: 157/255, blue: 223/255, alpha: 1.0)
+    }
+    
+    private func removeButtonState() {
+        groupButton.setTitle("✔︎", for: .normal)
+        groupButton.setTitleColor(UIColor.gray, for: .normal)
+        groupButton.backgroundColor = .white
+    }
+    
     private func configureGroupButton(dependOn data: Bool) {
         switch data {
         case true:
-            groupButton.setTitle("✔︎", for: .normal)
-            groupButton.setTitleColor(UIColor.gray, for: .normal)
-            groupButton.backgroundColor = .white
+//            groupButton.setTitle("✔︎", for: .normal)
+//            groupButton.setTitleColor(UIColor.gray, for: .normal)
+//            groupButton.backgroundColor = .white
+            removeButtonState()
         case false:
-            groupButton.setTitle("✚", for: .normal)
-            groupButton.setTitleColor(UIColor.white, for: .normal)
-            groupButton.backgroundColor = UIColor(red: 113/255, green: 157/255, blue: 223/255, alpha: 1.0)
+            addButtonState()
+//            groupButton.setTitle("✚", for: .normal)
+//            groupButton.setTitleColor(UIColor.white, for: .normal)
+//            groupButton.backgroundColor = UIColor(red: 113/255, green: 157/255, blue: 223/255, alpha: 1.0)
         }
     }
     
