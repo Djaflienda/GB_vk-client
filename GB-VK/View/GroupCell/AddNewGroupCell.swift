@@ -15,7 +15,7 @@ class AddNewGroupCell: UITableViewCell {
     @IBOutlet private weak var groupImage: UIImageView!
     @IBOutlet private weak var groupName: UILabel!
     @IBOutlet private weak var groupDescription: UILabel!
-    @IBOutlet private weak var groupButton: UIButton!
+    @IBOutlet weak var groupButton: UIButton!
     
     //MARK: -Properties
     
@@ -67,21 +67,8 @@ class AddNewGroupCell: UITableViewCell {
     
     private func configureGroupButton(dependOn data: Bool) {
         switch data {
-        case true:
-//            groupButton.setTitle("✔︎", for: .normal)
-//            groupButton.setTitleColor(UIColor.gray, for: .normal)
-//            groupButton.backgroundColor = .white
-            removeButtonState()
-        case false:
-            addButtonState()
-//            groupButton.setTitle("✚", for: .normal)
-//            groupButton.setTitleColor(UIColor.white, for: .normal)
-//            groupButton.backgroundColor = UIColor(red: 113/255, green: 157/255, blue: 223/255, alpha: 1.0)
+        case true: removeButtonState()
+        case false: addButtonState()
         }
     }
-    
-    @IBAction func addNewGroup() {
-        
-    }
-
 }

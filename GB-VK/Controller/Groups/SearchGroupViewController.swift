@@ -9,7 +9,7 @@
 import UIKit
 
 protocol UpdateGroupInformation: class {
-    func updateGroupInformation()
+    func performAction(with group: Group)
 }
 
 class SearchGroupViewController: UIViewController {
@@ -25,7 +25,6 @@ class SearchGroupViewController: UIViewController {
     
     //MARK: -Properties
     
-    private var groupsArray = /*[String]()*/ allGroups
     weak var delegate: UpdateGroupInformation?
     
     //MARK: -Init
@@ -59,16 +58,15 @@ extension SearchGroupViewController: UITableViewDelegate {
 extension SearchGroupViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groupsArray.count
+        return allGroups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AddNewGroupCell.reusableID, for: indexPath) as! AddNewGroupCell
-        cell.configureCell(with: groupsArray[indexPath.row])
-        
+        cell.configureCell(with: allGroups[indexPath.row])
         cell.groupButtonAction = { [unowned self] in
-            allGroups[indexPath.row].isParticipating = !allGroups[indexPath.row].isParticipating
-            self.delegate?.updateGroupInformation()
+            self.delegate?.performAction(with: allGroups[indexPath.row])
+//            allGroups[indexPath.row].isParticipating.toggle()
         }
         return cell
     }

@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct Group {
+struct Group: Equatable {
     
+    var groupID: Int
     var groupImage: String
     var groupName: String
     var groupDescription: String

@@ -21,13 +21,9 @@ class GroupsViewController: UIViewController {
     
     //MARK: -Properties
     
-    private var groupsArray: [Group] {
-        var groups = [Group]()
-        for group in allGroups where group.isParticipating {
-            groups.append(group)
-        }
-        return groups
-    }
+    private var groupsArray: [Group] = {
+        allGroups.filter {$0.isParticipating}
+    }()
     
     //MARK: -Init
     
@@ -42,6 +38,11 @@ class GroupsViewController: UIViewController {
     }
     
     //MARK: -Handlers
+    
+    private func toggleIsParticipatingProperty(for group: Group) {
+        guard let indexOfElement = allGroups.firstIndex(where: {$0 == group}) else {return}
+        allGroups[indexOfElement].isParticipating.toggle()
+    }
 
     @IBAction func addNewGroupButtonPressed(_ sender: UIBarButtonItem) {
         let destinationVC = storyboard?.instantiateViewController(withIdentifier: "SearchGroupViewController") as! SearchGroupViewController
@@ -67,13 +68,11 @@ extension GroupsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            allGroups[indexPath.row].isParticipating = !allGroups[indexPath.row].isParticipating
-            //удалять данные из groupArray чтобы не было ошибки
-            let indexPath = IndexPath(row: 0, section: 0)
+            toggleIsParticipatingProperty(for: groupsArray[indexPath.row])
+            groupsArray.remove(at: indexPath.row)
+            let indexPath = IndexPath(row: indexPath.row, section: 0)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
         }
-
     }
 }
 
@@ -93,7 +92,16 @@ extension GroupsViewController: UITableViewDataSource {
 
 extension GroupsViewController: UpdateGroupInformation {
     
-    func updateGroupInformation() {
+    func performAction(with group: Group) {
+        switch groupsArray.contains(group) {
+        case true:
+            let indexOfElement = groupsArray.firstIndex(where: {$0 == group})
+            groupsArray.remove(at: indexOfElement!)
+        case false:
+            groupsArray.insert(group, at: 0)
+            groupsArray[0].isParticipating.toggle()
+        }
+        toggleIsParticipatingProperty(for: group)
         tableView.reloadData()
     }
 }

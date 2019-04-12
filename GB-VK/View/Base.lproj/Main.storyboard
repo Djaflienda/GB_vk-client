@@ -430,7 +430,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="groupButton" destination="E2Y-hi-POQ" id="bww-Fu-4kb"/>
+                                            <outlet property="groupButton" destination="E2Y-hi-POQ" id="4fc-Yf-v8C"/>
                                             <outlet property="groupDescription" destination="P8t-oI-b0n" id="xvC-oz-dWk"/>
                                             <outlet property="groupImage" destination="bYT-6h-eBz" id="eYw-Uj-Ush"/>
                                             <outlet property="groupName" destination="5zx-1V-TCz" id="Z1S-9G-7cF"/>
