@@ -10,6 +10,8 @@ import UIKit
 
 class FriendTableViewCell: UITableViewCell {
     
+    static let reusableID = "FriendTableViewCell"
+    
     @IBOutlet private weak var profileImage: UIImageView!
     @IBOutlet private weak var profileNameLabel: UILabel!
 

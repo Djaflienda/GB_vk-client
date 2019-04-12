@@ -12,26 +12,26 @@ class FriendsViewController: UIViewController {
 
     //MARK: -@IBOutlet
     
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView! {
+        didSet {
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+        }
+    }
     
     //MARK: -Properties
     
-    private let friendsArray = [
-        Friend(profileImage: "friend0", profileName: "Slawomira Pelikan"),
-        Friend(profileImage: "friend1", profileName: "Nuria Pelayo"),
-        Friend(profileImage: "friend2", profileName: "Gladys Kanyinda"),
-        Friend(profileImage: "friend3", profileName: "Gaspar Antunes"),
-        Friend(profileImage: "friend4", profileName: "Song Bao")
-    ]
+    private let friendsArray = /*[Friend]()*/ friends
     
     //MARK: -Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         title = "Friends"
     }
     
@@ -41,9 +41,15 @@ class FriendsViewController: UIViewController {
 
 extension FriendsViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 48.5
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let destinationVC = storyboard?.instantiateViewController(withIdentifier: "FriendPhotosViewController") as! FriendPhotosViewController
+        destinationVC.friendName = friendsArray[indexPath.row].profileName
+        destinationVC.friendImageName = friendsArray[indexPath.row].profileImage
         navigationController?.pushViewController(destinationVC, animated: true)
     }
 }
@@ -55,7 +61,8 @@ extension FriendsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.reusableID,
+                                                 for: indexPath) as! FriendTableViewCell
         cell.configureCell(with: friendsArray[indexPath.row])
         return cell
     }
