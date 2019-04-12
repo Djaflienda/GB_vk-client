@@ -12,4 +12,5 @@ struct Friend {
     
     let profileImage: String
     let profileName: String
+    let profileSurname: String
 }

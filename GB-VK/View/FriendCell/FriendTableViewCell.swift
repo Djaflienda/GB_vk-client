@@ -17,6 +17,10 @@ class FriendTableViewCell: UITableViewCell {
 
     func configureCell(with data: Friend) {
         self.profileImage.image = UIImage(named: data.profileImage)
-        self.profileNameLabel.text = data.profileName
+        
+        let attributedText = NSMutableAttributedString(string: data.profileName, attributes: [.font: UIFont.systemFont(ofSize: 17.0, weight: .regular)])
+        attributedText.append(NSMutableAttributedString(string: " \(data.profileSurname)", attributes: [.font: UIFont.systemFont(ofSize: 17.0, weight: .bold)]))
+        
+        self.profileNameLabel.attributedText = attributedText
     }
 }

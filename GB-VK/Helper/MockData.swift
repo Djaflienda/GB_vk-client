@@ -9,11 +9,11 @@
 import Foundation
 
 let friends = [
-    Friend(profileImage: "friend0", profileName: "Slawomira Pelikan"),
-    Friend(profileImage: "friend1", profileName: "Nuria Pelayo"),
-    Friend(profileImage: "friend2", profileName: "Gladys Kanyinda"),
-    Friend(profileImage: "friend3", profileName: "Gaspar Antunes"),
-    Friend(profileImage: "friend4", profileName: "Song Bao")
+    Friend(profileImage: "friend0", profileName: "Slawomira", profileSurname: "Pelikan"),
+    Friend(profileImage: "friend1", profileName: "Nuria", profileSurname: "Pelayo"),
+    Friend(profileImage: "friend2", profileName: "Gladys", profileSurname: "Kanyinda"),
+    Friend(profileImage: "friend3", profileName: "Gaspar", profileSurname: "Antunes"),
+    Friend(profileImage: "friend4", profileName: "Song", profileSurname: "Bao")
 ]
 
 var allGroups = [
