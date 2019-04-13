@@ -12,11 +12,11 @@ class FriendTableViewCell: UITableViewCell {
     
     static let reusableID = "FriendTableViewCell"
     
-    @IBOutlet private weak var profileImage: UIImageView!
+    @IBOutlet private weak var shadowView: RoundShadowView!
     @IBOutlet private weak var profileNameLabel: UILabel!
 
     func configureCell(with data: Friend) {
-        self.profileImage.image = UIImage(named: data.profileImage)
+        self.shadowView.configureImageView(with: data.profileImage)
         
         let attributedText = NSMutableAttributedString(string: data.profileName, attributes: [.font: UIFont.systemFont(ofSize: 17.0, weight: .regular)])
         attributedText.append(NSMutableAttributedString(string: " \(data.profileSurname)", attributes: [.font: UIFont.systemFont(ofSize: 17.0, weight: .bold)]))
@@ -24,3 +24,4 @@ class FriendTableViewCell: UITableViewCell {
         self.profileNameLabel.attributedText = attributedText
     }
 }
+
