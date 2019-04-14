@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ofm-57-2mw">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -615,6 +615,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0OE-Tg-0vQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4540.579710144928" y="-301.33928571428572"/>
+        </scene>
+        <!--Control View Controller-->
+        <scene sceneID="3NZ-v7-bd5">
+            <objects>
+                <viewController id="ofm-57-2mw" customClass="ControlViewController" customModule="GB_VK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CJE-cL-bqs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSD-Sw-oXH" customClass="CustomControl" customModule="GB_VK" customModuleProvider="target">
+                                <rect key="frame" x="177" y="418" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Ae1-aH-Fq5"/>
+                                    <constraint firstAttribute="height" constant="60" id="FHA-IH-MSz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jSD-Sw-oXH" firstAttribute="centerX" secondItem="CJE-cL-bqs" secondAttribute="centerX" id="Opy-IN-ado"/>
+                            <constraint firstItem="jSD-Sw-oXH" firstAttribute="centerY" secondItem="CJE-cL-bqs" secondAttribute="centerY" id="meJ-d8-ksM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bdx-8G-IdL"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="jSD-Sw-oXH" id="SZu-Mx-mzn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cva-8t-ORl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6235" y="-5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="n6b-sz-J8f">
