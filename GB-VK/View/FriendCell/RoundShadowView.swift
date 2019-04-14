@@ -56,7 +56,7 @@ class RoundShadowView: UIView {
     //MARK: -Handlers
     
     override func layoutSubviews() {
-        super.layoutSubviews() //is essential?
+        super.layoutSubviews()
         layer.backgroundColor = UIColor.clear.cgColor
         containerView.layer.masksToBounds = true
         addSubview(containerView)
