@@ -8,129 +8,59 @@
 
 import UIKit
 
-// customcontrol: UIControl
-// внутри UILabel & UIView
-// на UIView рисую сердечко
-// функция изменения цифры лайка + сам контрол.аддТаргет
-
-enum CustomControlState {
-    case liked, normal
-}
-
 class CustomControl: UIControl {
     
-    let likeButton = UIButton()
-    let countLikeLabel = UILabel()
-    var liked: Bool = false
-    
+    var isLiked: Bool = false
+    var stackView: UIStackView!
+    let likeView = UIImageView(image: UIImage(named: "heart-empty"))
+    let likeLabel = UILabel()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
         setupView()
-
     }
     
     private func setupView() {
-        likeButton.backgroundColor = .red
-        likeButton.setTitle("1", for: .normal)
-        likeButton.setTitle("2", for: .highlighted)
-        countLikeLabel.text = "0"
-        let stackView = UIStackView(arrangedSubviews: [self.countLikeLabel, self.likeButton])
-        self.addSubview(stackView)
-        stackView.frame = bounds
-        stackView.spacing = 8
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .fillEqually
-
-        likeButton.addTarget(self, action: #selector(printText), for: .touchUpInside)
+        
+        self.stackView = UIStackView(arrangedSubviews: [likeLabel, likeView])
+        self.stackView.axis = .horizontal
+        self.likeLabel.text = "0"
+        self.likeLabel.textAlignment = .right
+        
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
+//        self.addGestureRecognizer(tapGR)
+//        OR
+        likeView.isUserInteractionEnabled = true
+        likeView.addGestureRecognizer(tapGR)
     }
     
-    @objc func printText() {
-        liked.toggle()
-        countLikeLabel.text = liked ? "1" : "0"
-        countLikeLabel.textColor = liked ? .red : .black
+    @objc func likeTapped() {
+        isLiked.toggle()
+        self.likeView.image = self.isLiked ? UIImage(named: "heart-filled")
+                                           : UIImage(named: "heart-empty")
+        self.likeLabel.text = self.isLiked ? "1" : "0"
+        self.likeLabel.textColor = self.isLiked ? .red : .black
+        sendActions(for: .valueChanged)
     }
-
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        addSubview(stackView)
+        self.stackView.frame = bounds
+        
+        likeLabel.translatesAutoresizingMaskIntoConstraints = false
+        likeView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            likeView.heightAnchor.constraint(equalTo: stackView.heightAnchor),
+            likeView.widthAnchor.constraint(equalTo: likeView.heightAnchor)
+            ])
+    }
 }
-
-//extension UIBezierPath {
-//    convenience init(heartIn rect: CGRect) {
-//        self.init()
-//
-//        //Calculate Radius of Arcs using Pythagoras
-//        let sideOne = rect.width * 0.4
-//        let sideTwo = rect.height * 0.3
-//        let arcRadius = sqrt(sideOne*sideOne + sideTwo*sideTwo)/2
-//
-//        //Left Hand Curve
-//        self.addArc(withCenter: CGPoint(x: rect.width * 0.3, y: rect.height * 0.35), radius: arcRadius, startAngle: 135.degreesToRadians, endAngle: 315.degreesToRadians, clockwise: true)
-//
-//        //Top Centre Dip
-//        self.addLine(to: CGPoint(x: rect.width/2, y: rect.height * 0.2))
-//
-//        //Right Hand Curve
-//        self.addArc(withCenter: CGPoint(x: rect.width * 0.7, y: rect.height * 0.35), radius: arcRadius, startAngle: 225.degreesToRadians, endAngle: 45.degreesToRadians, clockwise: true)
-//
-//        //Right Bottom Line
-//        self.addLine(to: CGPoint(x: rect.width * 0.5, y: rect.height * 0.95))
-//
-//        //Left Bottom Line
-//        self.close()
-//    }
-//}
-//
-//extension Int {
-//    var degreesToRadians: CGFloat { return CGFloat(self) * .pi / 180 }
-//}
-//
-//class CustomControl: UIControl {
-//
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//
-//        self.addTarget(self, action: #selector(printText), for: .touchUpInside)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//
-//        self.addTarget(self, action: #selector(printText), for: .touchUpInside)
-//
-//    }
-//
-//    @objc func printText() {
-//        print("Hello world")
-//        filled.toggle()
-//
-//    }
-//
-//    var filled: Bool = false
-//    var strokeWidth: CGFloat = 2.0
-//
-//    var strokeColor: UIColor? = .red
-//
-//    override func draw(_ rect: CGRect) {
-//        let bezierPath = UIBezierPath(heartIn: self.bounds)
-//
-//        if self.strokeColor != nil {
-//            self.strokeColor!.setStroke()
-//        } else {
-//            self.tintColor.setStroke()
-//        }
-//
-//        bezierPath.lineWidth = self.strokeWidth
-//        bezierPath.stroke()
-//
-//        if self.filled {
-//            self.tintColor.setFill()
-//            bezierPath.fill()
-//        }
-//    }
-//
-//
-//}
