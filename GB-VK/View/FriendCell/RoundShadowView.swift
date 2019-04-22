@@ -58,9 +58,9 @@ class RoundShadowView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.backgroundColor = UIColor.clear.cgColor
-        containerView.layer.masksToBounds = true
         addSubview(containerView)
         containerView.frame = bounds
+        containerView.layer.masksToBounds = true
     }
     
     func configureImageView(with image: String) {
