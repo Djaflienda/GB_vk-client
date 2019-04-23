@@ -12,22 +12,24 @@ class FriendsViewController: UIViewController {
 
     //MARK: -@IBOutlet
     
-    @IBOutlet private weak var tableView: UITableView! {
-        didSet {
-            self.tableView.delegate = self
-            self.tableView.dataSource = self
-        }
-    }
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var tableView: UITableView!
     
     //MARK: -Properties
     
     private var friendsDictionary = [String: [Friend]]()
     private var friendsSectionTitles = [String]()
     
+    private lazy var searchingManager = SearchingManager<Friend>()
+    
     //MARK: -Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchBar.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
         
         friends.forEach { (friend) in
             let sectionKey = String(friend.profileSurname.prefix(1))
@@ -59,8 +61,8 @@ extension FriendsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let destinationVC = storyboard?.instantiateViewController(withIdentifier: "FriendPhotosViewController") as! FriendPhotosViewController
         let key = friendsSectionTitles[indexPath.section]
-        destinationVC.friendName = friendsDictionary[key]?[indexPath.row].profileName
-        destinationVC.friendImageName = friendsDictionary[key]?[indexPath.row].profileImage
+        destinationVC.friendName =  searchingManager.isSearching ?          searchingManager.searchingResult[indexPath.row].profileName : friendsDictionary[key]?[indexPath.row].profileName
+        destinationVC.friendImageName = searchingManager.isSearching ? searchingManager.searchingResult[indexPath.row].profileImage : friendsDictionary[key]?[indexPath.row].profileImage
         navigationController?.pushViewController(destinationVC, animated: true)
     }
 }
@@ -68,18 +70,23 @@ extension FriendsViewController: UITableViewDelegate {
 extension FriendsViewController: UITableViewDataSource {
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        if searchingManager.isSearching { return nil }
         return friendsSectionTitles
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if searchingManager.isSearching { return nil }
         return friendsSectionTitles[section]
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if searchingManager.isSearching { return 1 }
         return friendsSectionTitles.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchingManager.isSearching { return searchingManager.searchingResult.count }
+        
         let friendKey = friendsSectionTitles[section]
         if let friendValues = friendsDictionary[friendKey] {
             return friendValues.count
@@ -90,10 +97,21 @@ extension FriendsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.reusableID,
                                                  for: indexPath) as! FriendTableViewCell
-        let friendKey = friendsSectionTitles[indexPath.section]
-        if let friendValues = friendsDictionary[friendKey] {
-            cell.configureCell(with: friendValues[indexPath.row])
+        if searchingManager.isSearching {
+            cell.configureCell(with: searchingManager.searchingResult[indexPath.row])
+        } else {
+            let friendKey = friendsSectionTitles[indexPath.section]
+            if let friendValues = friendsDictionary[friendKey] {
+                cell.configureCell(with: friendValues[indexPath.row])
+            }
         }
         return cell
+    }
+}
+
+extension FriendsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchingManager.searchingFilter(for: searchText, in: friends)
+        tableView.reloadData()
     }
 }

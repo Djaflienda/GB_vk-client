@@ -338,6 +338,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="E4n-tB-5RK" id="Sxr-6A-mGW"/>
                         <outlet property="tableView" destination="gWE-ZJ-GHb" id="CeH-at-PuA"/>
                     </connections>
                 </viewController>
@@ -449,6 +450,7 @@
                         <viewLayoutGuide key="safeArea" id="1G5-Iz-plg"/>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="TwB-W0-L4d" id="mkE-Z9-xHT"/>
                         <outlet property="tableView" destination="Gqr-1p-d5W" id="fUX-B9-t14"/>
                     </connections>
                 </viewController>
@@ -547,6 +549,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Mkg-67-nE8"/>
                     <connections>
+                        <outlet property="searchBar" destination="MYH-do-uue" id="Z60-Bg-wo5"/>
                         <outlet property="tableView" destination="Zbo-BM-Ys5" id="8h1-L9-ofj"/>
                     </connections>
                 </viewController>

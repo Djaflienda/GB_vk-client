@@ -12,24 +12,24 @@ class GroupsViewController: UIViewController {
     
     //MARK: -@IBOutlet
 
-    @IBOutlet private weak var tableView: UITableView! {
-        didSet {
-            self.tableView.delegate = self
-            self.tableView.dataSource = self
-        }
-    }
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var tableView: UITableView!
     
     //MARK: -Properties
     
     private var groupsArray: [Group] = {
         allGroups.filter {$0.isParticipating}
     }()
+    private lazy var searchingManager = SearchingManager<Group>()
     
     //MARK: -Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        searchBar.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,13 +79,18 @@ extension GroupsViewController: UITableViewDelegate {
 extension GroupsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchingManager.isSearching { return searchingManager.searchingResult.count}
         return groupsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GroupCell.reusableID,
                                                  for: indexPath) as! GroupCell
-        cell.configureCell(with: groupsArray[indexPath.row])
+        if searchingManager.isSearching {
+            cell.configureCell(with: searchingManager.searchingResult[indexPath.row])
+        } else {
+            cell.configureCell(with: groupsArray[indexPath.row])
+        }
         return cell
     }
 }
@@ -102,6 +107,13 @@ extension GroupsViewController: UpdateGroupInformation {
             groupsArray[0].isParticipating.toggle()
         }
         toggleIsParticipatingProperty(for: group)
+        tableView.reloadData()
+    }
+}
+
+extension GroupsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchingManager.searchingFilter(for: searchText, in: groupsArray)
         tableView.reloadData()
     }
 }

@@ -29,6 +29,7 @@
 		FA9B3A172261C5A4009F2CB4 /* RoundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B3A162261C5A4009F2CB4 /* RoundShadowView.swift */; };
 		FA9B3A1922630CD0009F2CB4 /* CustomControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B3A1822630CD0009F2CB4 /* CustomControl.swift */; };
 		FA9B3A1B2263101A009F2CB4 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B3A1A2263101A009F2CB4 /* ControlViewController.swift */; };
+		FABF4F03226F935C00672BE4 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF4F02226F935C00672BE4 /* SearchManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		FA9B3A162261C5A4009F2CB4 /* RoundShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShadowView.swift; sourceTree = "<group>"; };
 		FA9B3A1822630CD0009F2CB4 /* CustomControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControl.swift; sourceTree = "<group>"; };
 		FA9B3A1A2263101A009F2CB4 /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
+		FABF4F02226F935C00672BE4 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				FA5D56F72259D998000FAEF6 /* Friend.swift */,
 				FA7677E5225A9CFC0000D39A /* Group.swift */,
+				FABF4F02226F935C00672BE4 /* SearchManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				FA5D56FB2259DF47000FAEF6 /* CredentialsChecker.swift in Sources */,
 				FA7677E6225A9CFC0000D39A /* Group.swift in Sources */,
 				FA5D56F12259D01F000FAEF6 /* GroupsViewController.swift in Sources */,
+				FABF4F03226F935C00672BE4 /* SearchManager.swift in Sources */,
 				FA5D56E9225968AC000FAEF6 /* FriendPhotosViewController.swift in Sources */,
 				FA9B3A172261C5A4009F2CB4 /* RoundShadowView.swift in Sources */,
 				FA5D56F32259D206000FAEF6 /* SearchGroupViewController.swift in Sources */,
