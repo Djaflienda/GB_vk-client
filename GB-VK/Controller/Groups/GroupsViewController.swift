@@ -68,8 +68,15 @@ extension GroupsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            toggleIsParticipatingProperty(for: groupsArray[indexPath.row])
-            groupsArray.remove(at: indexPath.row)
+            if searchingManager.isSearching {
+                guard let indexOfElement = groupsArray.firstIndex(where: {$0 == searchingManager.searchingResult[indexPath.row]}) else {return}
+                groupsArray.remove(at: indexOfElement)
+                toggleIsParticipatingProperty(for: searchingManager.searchingResult[indexPath.row])
+                searchingManager.searchingResult.remove(at: indexPath.row)
+            } else {
+                toggleIsParticipatingProperty(for: groupsArray[indexPath.row])
+                groupsArray.remove(at: indexPath.row)
+            }
             let indexPath = IndexPath(row: indexPath.row, section: 0)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -79,18 +86,16 @@ extension GroupsViewController: UITableViewDelegate {
 extension GroupsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchingManager.isSearching { return searchingManager.searchingResult.count}
+        if searchingManager.isSearching { return searchingManager.searchingResult.count }
         return groupsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GroupCell.reusableID,
                                                  for: indexPath) as! GroupCell
-        if searchingManager.isSearching {
-            cell.configureCell(with: searchingManager.searchingResult[indexPath.row])
-        } else {
+        searchingManager.isSearching ?
+            cell.configureCell(with: searchingManager.searchingResult[indexPath.row]) :
             cell.configureCell(with: groupsArray[indexPath.row])
-        }
         return cell
     }
 }
