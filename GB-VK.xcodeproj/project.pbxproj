@@ -12,6 +12,8 @@
 		FA27854D22591A200034B838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA27854B22591A200034B838 /* Main.storyboard */; };
 		FA27854F22591A210034B838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA27854E22591A210034B838 /* Assets.xcassets */; };
 		FA27855222591A210034B838 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA27855022591A210034B838 /* LaunchScreen.storyboard */; };
+		FA4583092271CC3B00A2E725 /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4583082271CC3B00A2E725 /* NewsfeedViewController.swift */; };
+		FA45830C2271CCF700A2E725 /* NewsfeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45830B2271CCF700A2E725 /* NewsfeedTableViewCell.swift */; };
 		FA5D56E522593A72000FAEF6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D56E422593A72000FAEF6 /* LoginViewController.swift */; };
 		FA5D56E7225966D8000FAEF6 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D56E6225966D8000FAEF6 /* FriendsViewController.swift */; };
 		FA5D56E9225968AC000FAEF6 /* FriendPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D56E8225968AC000FAEF6 /* FriendPhotosViewController.swift */; };
@@ -40,6 +42,8 @@
 		FA27854E22591A210034B838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA27855122591A210034B838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA27855322591A210034B838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA4583082271CC3B00A2E725 /* NewsfeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
+		FA45830B2271CCF700A2E725 /* NewsfeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewCell.swift; sourceTree = "<group>"; };
 		FA5D56E422593A72000FAEF6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA5D56E6225966D8000FAEF6 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		FA5D56E8225968AC000FAEF6 /* FriendPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotosViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +105,22 @@
 			path = "GB-VK";
 			sourceTree = "<group>";
 		};
+		FA4583072271CC1200A2E725 /* Newsfeed */ = {
+			isa = PBXGroup;
+			children = (
+				FA4583082271CC3B00A2E725 /* NewsfeedViewController.swift */,
+			);
+			path = Newsfeed;
+			sourceTree = "<group>";
+		};
+		FA45830A2271CCDB00A2E725 /* NewsfeedCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA45830B2271CCF700A2E725 /* NewsfeedTableViewCell.swift */,
+			);
+			path = NewsfeedCell;
+			sourceTree = "<group>";
+		};
 		FA5D56EA2259CF95000FAEF6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +137,7 @@
 				FA7677EF225B63C30000D39A /* FriendPhotoCell */,
 				FA7677E7225A9FB20000D39A /* GroupCell */,
 				FA5D56F42259D8DF000FAEF6 /* FriendCell */,
+				FA45830A2271CCDB00A2E725 /* NewsfeedCell */,
 				FA27854B22591A200034B838 /* Main.storyboard */,
 				FA27855022591A210034B838 /* LaunchScreen.storyboard */,
 				FA9B3A1822630CD0009F2CB4 /* CustomControl.swift */,
@@ -131,6 +152,7 @@
 				FA5D56ED2259CFCA000FAEF6 /* Login */,
 				FA5D56EE2259CFD7000FAEF6 /* Friends */,
 				FA5D56EF2259D006000FAEF6 /* Groups */,
+				FA4583072271CC1200A2E725 /* Newsfeed */,
 				FA9B3A1A2263101A009F2CB4 /* ControlViewController.swift */,
 			);
 			path = Controller;
@@ -285,6 +307,7 @@
 				FA7677E6225A9CFC0000D39A /* Group.swift in Sources */,
 				FA5D56F12259D01F000FAEF6 /* GroupsViewController.swift in Sources */,
 				FABF4F03226F935C00672BE4 /* SearchManager.swift in Sources */,
+				FA4583092271CC3B00A2E725 /* NewsfeedViewController.swift in Sources */,
 				FA5D56E9225968AC000FAEF6 /* FriendPhotosViewController.swift in Sources */,
 				FA9B3A172261C5A4009F2CB4 /* RoundShadowView.swift in Sources */,
 				FA5D56F32259D206000FAEF6 /* SearchGroupViewController.swift in Sources */,
@@ -292,6 +315,7 @@
 				FA27854A22591A200034B838 /* StartViewController.swift in Sources */,
 				FA5D56F82259D998000FAEF6 /* Friend.swift in Sources */,
 				FA9B3A1B2263101A009F2CB4 /* ControlViewController.swift in Sources */,
+				FA45830C2271CCF700A2E725 /* NewsfeedTableViewCell.swift in Sources */,
 				FA7677EC225AABD10000D39A /* UIViewControllerAlerts.swift in Sources */,
 				FA27854822591A200034B838 /* AppDelegate.swift in Sources */,
 				FA7677E4225A8A5D0000D39A /* MockData.swift in Sources */,
