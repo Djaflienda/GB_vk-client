@@ -24,7 +24,7 @@ class GroupCell: UITableViewCell {
     
     //MARK: -Handlers
     
-    func configureCell(with data: Group) {
+    func configureCell(with data: GroupOLD) {
         self.groupImage.image = UIImage(named: data.groupImage)
         self.groupName.text = data.groupName
         self.groupDescription.text = data.groupDescription

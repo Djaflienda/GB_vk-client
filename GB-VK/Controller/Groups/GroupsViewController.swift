@@ -17,10 +17,10 @@ class GroupsViewController: UIViewController {
     
     //MARK: -Properties
     
-    private var groupsArray: [Group] = {
+    private var groupsArray: [GroupOLD] = {
         allGroups.filter {$0.isParticipating}
     }()
-    private lazy var searchingManager = SearchingManager<Group>()
+    private lazy var searchingManager = SearchingManager<GroupOLD>()
     
     //MARK: -Init
     
@@ -39,7 +39,7 @@ class GroupsViewController: UIViewController {
     
     //MARK: -Handlers
     
-    private func toggleIsParticipatingProperty(for group: Group) {
+    private func toggleIsParticipatingProperty(for group: GroupOLD) {
         guard let indexOfElement = allGroups.firstIndex(where: {$0 == group}) else {return}
         allGroups[indexOfElement].isParticipating.toggle()
     }
@@ -102,7 +102,7 @@ extension GroupsViewController: UITableViewDataSource {
 
 extension GroupsViewController: UpdateGroupInformation {
     
-    func performAction(with group: Group) {
+    func performAction(with group: GroupOLD) {
         switch groupsArray.contains(group) {
         case true:
             let indexOfElement = groupsArray.firstIndex(where: {$0 == group})

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol UpdateGroupInformation: class {
-    func performAction(with group: Group)
+    func performAction(with group: GroupOLD)
 }
 
 class SearchGroupViewController: UIViewController {
@@ -22,7 +22,7 @@ class SearchGroupViewController: UIViewController {
     //MARK: -Properties
     
     weak var delegate: UpdateGroupInformation?
-    private lazy var searchingManager = SearchingManager<Group>()
+    private lazy var searchingManager = SearchingManager<GroupOLD>()
     
     //MARK: -Init
     
