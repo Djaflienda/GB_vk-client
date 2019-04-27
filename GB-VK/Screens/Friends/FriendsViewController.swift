@@ -15,6 +15,7 @@ protocol FriendsDisplayLogic: class {
 class FriendsViewController: UIViewController, FriendsDisplayLogic {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
   var interactor: FriendsBusinessLogic?
   var router: (NSObjectProtocol & FriendsRoutingLogic)?
@@ -71,5 +72,14 @@ extension FriendsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: FriendCell.reusableID, for: indexPath) as! FriendCell
         cell.configureCell(with: friendsViewModel.cells[indexPath.row])
         return cell
+    }
+}
+
+extension FriendsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchText.isEmpty ?
+            interactor?.makeRequest(request: .getFriendsList) :
+            interactor?.makeRequest(request: .getFriendsListFiltered(searchText: searchText,
+                                                                     target: friends))
     }
 }

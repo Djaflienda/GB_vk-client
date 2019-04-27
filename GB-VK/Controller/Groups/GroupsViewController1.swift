@@ -68,15 +68,15 @@ extension GroupsViewController1: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if searchingManager.isSearching {
-                guard let indexOfElement = groupsArray.firstIndex(where: {$0 == searchingManager.searchingResult[indexPath.row]}) else {return}
-                groupsArray.remove(at: indexOfElement)
-                toggleIsParticipatingProperty(for: searchingManager.searchingResult[indexPath.row])
-                searchingManager.searchingResult.remove(at: indexPath.row)
-            } else {
-                toggleIsParticipatingProperty(for: groupsArray[indexPath.row])
-                groupsArray.remove(at: indexPath.row)
-            }
+//            if searchingManager.isSearching {
+//                guard let indexOfElement = groupsArray.firstIndex(where: {$0 == searchingManager.searchingResult[indexPath.row]}) else {return}
+//                groupsArray.remove(at: indexOfElement)
+//                toggleIsParticipatingProperty(for: searchingManager.searchingResult[indexPath.row])
+//                searchingManager.searchingResult.remove(at: indexPath.row)
+//            } else {
+//                toggleIsParticipatingProperty(for: groupsArray[indexPath.row])
+//                groupsArray.remove(at: indexPath.row)
+//            }
             let indexPath = IndexPath(row: indexPath.row, section: 0)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -86,7 +86,7 @@ extension GroupsViewController1: UITableViewDelegate {
 extension GroupsViewController1: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchingManager.isSearching { return searchingManager.searchingResult.count }
+//        if searchingManager.isSearching { return searchingManager.searchingResult.count }
         return groupsArray.count
     }
     

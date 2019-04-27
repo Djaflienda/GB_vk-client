@@ -58,23 +58,23 @@ extension SearchGroupViewController: UITableViewDelegate {
 extension SearchGroupViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchingManager.isSearching { return searchingManager.searchingResult.count}
+//        if searchingManager.isSearching { return searchingManager.searchingResult.count}
         return allGroups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AddNewGroupCell.reusableID, for: indexPath) as! AddNewGroupCell
-        if searchingManager.isSearching {
-            cell.configureCell(with: searchingManager.searchingResult[indexPath.row])
-            cell.groupButtonAction = { [unowned self] in
-                self.delegate?.performAction(with: self.searchingManager.searchingResult[indexPath.row])
-            }
-        } else {
-            cell.configureCell(with: allGroups[indexPath.row])
-            cell.groupButtonAction = { [unowned self] in
-                self.delegate?.performAction(with: allGroups[indexPath.row])
-            }
-        }
+//        if searchingManager.isSearching {
+//            cell.configureCell(with: searchingManager.searchingResult[indexPath.row])
+//            cell.groupButtonAction = { [unowned self] in
+//                self.delegate?.performAction(with: self.searchingManager.searchingResult[indexPath.row])
+//            }
+//        } else {
+//            cell.configureCell(with: allGroups[indexPath.row])
+//            cell.groupButtonAction = { [unowned self] in
+//                self.delegate?.performAction(with: allGroups[indexPath.row])
+//            }
+//        }
         return cell
     }
 }

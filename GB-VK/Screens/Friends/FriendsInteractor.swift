@@ -16,6 +16,7 @@ class FriendsInteractor: FriendsBusinessLogic {
 
   var presenter: FriendsPresentationLogic?
   var service: FriendsService?
+    private var searchManager = SearchingManager<Friend>()
   
   func makeRequest(request: Friends.Model.Request.RequestType) {
     if service == nil {
@@ -25,6 +26,9 @@ class FriendsInteractor: FriendsBusinessLogic {
     switch request {
     case .getFriendsList:
         presenter?.presentData(response: .presentFrieds(friends: friends))
+    case .getFriendsListFiltered(let searchText, let target):
+        searchManager.searchingFilter(for: searchText, in: target)
+        presenter?.presentData(response: .presentFrieds(friends: searchManager.searchingResult))
     @unknown default:
         print("add new case")
     }

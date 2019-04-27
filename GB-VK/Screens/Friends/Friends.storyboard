@@ -25,6 +25,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="e57-XB-VcH" id="xNV-mC-Jp9"/>
+                                    </connections>
                                 </searchBar>
                                 <connections>
                                     <outlet property="dataSource" destination="e57-XB-VcH" id="1aZ-1H-Qi0"/>
@@ -43,6 +46,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="tej-YK-shr"/>
                     <connections>
+                        <outlet property="searchBar" destination="3P1-EX-jOf" id="u5H-zK-gj6"/>
                         <outlet property="tableView" destination="ljc-pg-hkC" id="Ypu-QW-F7x"/>
                     </connections>
                 </viewController>

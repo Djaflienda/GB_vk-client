@@ -14,11 +14,13 @@ enum Friends {
     struct Request {
       enum RequestType {
         case getFriendsList
+        case getFriendsListFiltered(searchText: String, target: [Friend])
       }
     }
     struct Response {
       enum ResponseType {
         case presentFrieds(friends: [Friend])
+//        case presentFriedsFiltered(friends: [Friend])
       }
     }
     struct ViewModel {

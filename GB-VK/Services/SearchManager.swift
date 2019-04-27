@@ -7,11 +7,9 @@
 //
 
 struct SearchingManager<T> {
-    var isSearching: Bool = false
     var searchingResult = [T]()
     
     mutating func searchingFilter(for text: String, in array: [T]) {
-        isSearching = text.isEmpty ? false : true
         searchingResult.removeAll()
         
         if let array = array as? [Friend] {
