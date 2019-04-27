@@ -46,7 +46,7 @@ class AddNewGroupCell: UITableViewCell {
         }
     }
     
-    func configureCell(with data: GroupOLD) {
+    func configureCell(with data: Group) {
         self.groupImage.image = UIImage(named: data.groupImage)
         self.groupName.text = data.groupName
         self.groupDescription.text = data.groupDescription

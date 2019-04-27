@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupsViewController: UIViewController {
+class GroupsViewController1: UIViewController {
     
     //MARK: -@IBOutlet
 
@@ -17,10 +17,10 @@ class GroupsViewController: UIViewController {
     
     //MARK: -Properties
     
-    private var groupsArray: [GroupOLD] = {
+    private var groupsArray: [Group] = {
         allGroups.filter {$0.isParticipating}
     }()
-    private lazy var searchingManager = SearchingManager<GroupOLD>()
+    private lazy var searchingManager = SearchingManager<Group>()
     
     //MARK: -Init
     
@@ -39,7 +39,7 @@ class GroupsViewController: UIViewController {
     
     //MARK: -Handlers
     
-    private func toggleIsParticipatingProperty(for group: GroupOLD) {
+    private func toggleIsParticipatingProperty(for group: Group) {
         guard let indexOfElement = allGroups.firstIndex(where: {$0 == group}) else {return}
         allGroups[indexOfElement].isParticipating.toggle()
     }
@@ -55,7 +55,7 @@ class GroupsViewController: UIViewController {
     }
 }
 
-extension GroupsViewController: UITableViewDelegate {
+extension GroupsViewController1: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 48.5
@@ -83,7 +83,7 @@ extension GroupsViewController: UITableViewDelegate {
     }
 }
 
-extension GroupsViewController: UITableViewDataSource {
+extension GroupsViewController1: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchingManager.isSearching { return searchingManager.searchingResult.count }
@@ -91,18 +91,18 @@ extension GroupsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: GroupCell.reusableID,
-                                                 for: indexPath) as! GroupCell
-        searchingManager.isSearching ?
-            cell.configureCell(with: searchingManager.searchingResult[indexPath.row]) :
-            cell.configureCell(with: groupsArray[indexPath.row])
-        return cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: GroupCell1.reusableID,
+//                                                 for: indexPath) as! GroupCell1
+//        searchingManager.isSearching ?
+//            cell.configureCell(with: searchingManager.searchingResult[indexPath.row]) :
+//            cell.configureCell(with: groupsArray[indexPath.row])
+        return UITableViewCell()
     }
 }
 
-extension GroupsViewController: UpdateGroupInformation {
+extension GroupsViewController1: UpdateGroupInformation {
     
-    func performAction(with group: GroupOLD) {
+    func performAction(with group: Group) {
         switch groupsArray.contains(group) {
         case true:
             let indexOfElement = groupsArray.firstIndex(where: {$0 == group})
@@ -116,7 +116,7 @@ extension GroupsViewController: UpdateGroupInformation {
     }
 }
 
-extension GroupsViewController: UISearchBarDelegate {
+extension GroupsViewController1: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchingManager.searchingFilter(for: searchText, in: groupsArray)
         tableView.reloadData()

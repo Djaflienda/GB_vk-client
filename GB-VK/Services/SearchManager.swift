@@ -20,7 +20,7 @@ struct SearchingManager<T> {
             searchingResult.append(contentsOf: nameSortedArray)
             searchingResult.append(contentsOf: surnameSortedArray)
         }
-        if let array = array as? [GroupOLD] {
+        if let array = array as? [Group] {
             let groupNameSortedArray = array.filter {$0.groupName.lowercased().prefix(text.count) == text.lowercased()} as! [T]
             searchingResult.append(contentsOf: groupNameSortedArray)
         }

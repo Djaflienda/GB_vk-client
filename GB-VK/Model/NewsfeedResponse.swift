@@ -15,7 +15,7 @@ struct NewsfeedResponseWrapped: Codable {
 struct NewsfeedResponse: Codable {
     var items: [NewsfeedItem]
     var profiles: [Profile]
-    var groups: [Group]
+    var groups: [NewsfeedGroup]
 }
 
 protocol ProfileRepresentable {
@@ -24,7 +24,7 @@ protocol ProfileRepresentable {
     var photo: String { get }
 }
 
-struct Group: Codable, ProfileRepresentable {
+struct NewsfeedGroup: Codable, ProfileRepresentable {
     let id: Int
     let name: String
     let photo100: String

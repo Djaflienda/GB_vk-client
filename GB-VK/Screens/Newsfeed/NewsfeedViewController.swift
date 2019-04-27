@@ -16,34 +16,34 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     
     @IBOutlet weak var tableView: UITableView!
     
-  var interactor: NewsfeedBusinessLogic?
-  var router: (NSObjectProtocol & NewsfeedRoutingLogic)?
+    var interactor: NewsfeedBusinessLogic?
+    var router: (NSObjectProtocol & NewsfeedRoutingLogic)?
     private var newsfeedViewModel = NewsfeedViewModel(cells: [])
   
-  // MARK: Setup
+    // MARK: Setup
   
-  private func setup() {
-    let viewController        = self
-    let interactor            = NewsfeedInteractor()
-    let presenter             = NewsfeedPresenter()
-    let router                = NewsfeedRouter()
-    viewController.interactor = interactor
-    viewController.router     = router
-    interactor.presenter      = presenter
-    presenter.viewController  = viewController
-    router.viewController     = viewController
-  }
+    private func setup() {
+        let viewController        = self
+        let interactor            = NewsfeedInteractor()
+        let presenter             = NewsfeedPresenter()
+        let router                = NewsfeedRouter()
+        viewController.interactor = interactor
+        viewController.router     = router
+        interactor.presenter      = presenter
+        presenter.viewController  = viewController
+        router.viewController     = viewController
+    }
   
-  // MARK: Routing
+    // MARK: Routing
   
-  // MARK: View lifecycle
+    // MARK: View lifecycle
     
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    setup()
-    tableView.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseID)
-    interactor?.makeRequest(request: .getNewsfeed)
-  }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+        tableView.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseID)
+        interactor?.makeRequest(request: .getNewsfeed)
+    }
   
     func displayData(viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
         switch viewModel {

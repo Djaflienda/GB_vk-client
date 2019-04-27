@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GroupOLD: Equatable {
+struct Group: Equatable {
     
     var groupID: Int
     var groupImage: String

@@ -37,7 +37,7 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
         }
     }
     
-    private func cellViewModel(from newsfeedItem: NewsfeedItem, profiles: [Profile], groups: [Group]) -> NewsfeedViewModel.Cell {
+    private func cellViewModel(from newsfeedItem: NewsfeedItem, profiles: [Profile], groups: [NewsfeedGroup]) -> NewsfeedViewModel.Cell {
         let profile = self.profile(for: newsfeedItem.sourceId, profiles: profiles, groups: groups)
         let photoAttachment = self.photoAttachment(newsfeedItem: newsfeedItem)
         let date = Date(timeIntervalSince1970: newsfeedItem.date)
@@ -53,7 +53,7 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
                                       photoAttachment: photoAttachment)
     }
     
-    private func profile(for sourceId: Int, profiles: [Profile], groups: [Group]) -> ProfileRepresentable {
+    private func profile(for sourceId: Int, profiles: [Profile], groups: [NewsfeedGroup]) -> ProfileRepresentable {
         let profileOrGroups: [ProfileRepresentable] = sourceId > 0 ? profiles : groups
         let normalSourceId = sourceId > 0 ? sourceId : -sourceId
         let profileRepresentable = profileOrGroups.first { (myProfileRepresentable) -> Bool in

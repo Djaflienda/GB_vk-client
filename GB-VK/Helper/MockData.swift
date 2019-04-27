@@ -32,14 +32,14 @@ let friends = [
 ]
 
 var allGroups = [
-    GroupOLD(groupID: 0, groupImage: "group0", groupName: "Group0", groupDescription: "Description0", isParticipating: true),
-    GroupOLD(groupID: 1, groupImage: "group1", groupName: "AGroup1", groupDescription: "Description1", isParticipating: false),
-    GroupOLD(groupID: 2, groupImage: "group2", groupName: "BGroup2", groupDescription: "Description2", isParticipating: true),
-    GroupOLD(groupID: 3, groupImage: "group3", groupName: "AGroup3", groupDescription: "Description3", isParticipating: true),
-    GroupOLD(groupID: 4, groupImage: "group4", groupName: "BGroup4", groupDescription: "Description4", isParticipating: false),
-    GroupOLD(groupID: 5, groupImage: "group0", groupName: "CGroup5", groupDescription: "Description5", isParticipating: true),
-    GroupOLD(groupID: 6, groupImage: "group1", groupName: "DGroup6", groupDescription: "Description6", isParticipating: true),
-    GroupOLD(groupID: 7, groupImage: "group2", groupName: "EGroup7", groupDescription: "Description7", isParticipating: false),
-    GroupOLD(groupID: 8, groupImage: "group3", groupName: "EGroup8", groupDescription: "Description8", isParticipating: true),
-    GroupOLD(groupID: 9, groupImage: "group4", groupName: "ZGroup9", groupDescription: "Description9", isParticipating: true)
+    Group(groupID: 0, groupImage: "group0", groupName: "Group0", groupDescription: "Description0", isParticipating: true),
+    Group(groupID: 1, groupImage: "group1", groupName: "AGroup1", groupDescription: "Description1", isParticipating: false),
+    Group(groupID: 2, groupImage: "group2", groupName: "BGroup2", groupDescription: "Description2", isParticipating: true),
+    Group(groupID: 3, groupImage: "group3", groupName: "AGroup3", groupDescription: "Description3", isParticipating: true),
+    Group(groupID: 4, groupImage: "group4", groupName: "BGroup4", groupDescription: "Description4", isParticipating: false),
+    Group(groupID: 5, groupImage: "group0", groupName: "CGroup5", groupDescription: "Description5", isParticipating: true),
+    Group(groupID: 6, groupImage: "group1", groupName: "DGroup6", groupDescription: "Description6", isParticipating: true),
+    Group(groupID: 7, groupImage: "group2", groupName: "EGroup7", groupDescription: "Description7", isParticipating: false),
+    Group(groupID: 8, groupImage: "group3", groupName: "EGroup8", groupDescription: "Description8", isParticipating: true),
+    Group(groupID: 9, groupImage: "group4", groupName: "ZGroup9", groupDescription: "Description9", isParticipating: true)
 ]
