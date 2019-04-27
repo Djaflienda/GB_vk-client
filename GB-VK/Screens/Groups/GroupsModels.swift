@@ -14,6 +14,7 @@ enum Groups {
     struct Request {
       enum RequestType {
         case getGroupsList
+        case getGroupsListFiltered(searchText: String, target: [Group])
       }
     }
     struct Response {

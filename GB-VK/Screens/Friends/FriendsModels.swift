@@ -20,7 +20,6 @@ enum Friends {
     struct Response {
       enum ResponseType {
         case presentFrieds(friends: [Friend])
-//        case presentFriedsFiltered(friends: [Friend])
       }
     }
     struct ViewModel {

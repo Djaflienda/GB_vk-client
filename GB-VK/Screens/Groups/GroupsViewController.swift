@@ -15,6 +15,7 @@ protocol GroupsDisplayLogic: class {
 class GroupsViewController: UIViewController, GroupsDisplayLogic {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
   var interactor: GroupsBusinessLogic?
   var router: (NSObjectProtocol & GroupsRoutingLogic)?
@@ -57,16 +58,29 @@ class GroupsViewController: UIViewController, GroupsDisplayLogic {
   }
 }
 
-extension GroupsViewController: UITableViewDelegate {}
+extension GroupsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 56
+    }
+}
 
 extension GroupsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return groupsViewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GroupCell.reuseID, for: indexPath) as! GroupCell
         cell.configureCell(with: groupsViewModel.cells[indexPath.row])
         return cell
+    }
+}
+
+extension GroupsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchText.isEmpty ?
+            interactor?.makeRequest(request: .getGroupsList) :
+            interactor?.makeRequest(request: .getGroupsListFiltered(searchText: searchText,
+                                                                     target: allGroups))
     }
 }

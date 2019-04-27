@@ -25,6 +25,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="KJG-3a-RZv" id="TRY-63-hkB"/>
+                                    </connections>
                                 </searchBar>
                                 <connections>
                                     <outlet property="dataSource" destination="KJG-3a-RZv" id="Wg2-G8-40w"/>
@@ -43,6 +46,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Groups" id="1JV-Uv-qFG"/>
                     <connections>
+                        <outlet property="searchBar" destination="61z-zN-tmM" id="aMK-e6-kLU"/>
                         <outlet property="tableView" destination="t1Q-nb-16F" id="vCc-LN-5iv"/>
                     </connections>
                 </viewController>

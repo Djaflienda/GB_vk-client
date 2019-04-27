@@ -16,6 +16,7 @@ class GroupsInteractor: GroupsBusinessLogic {
 
   var presenter: GroupsPresentationLogic?
   var service: GroupsService?
+    private var searchManager = SearchingManager<Group>()
   
   func makeRequest(request: Groups.Model.Request.RequestType) {
     if service == nil {
@@ -24,6 +25,9 @@ class GroupsInteractor: GroupsBusinessLogic {
     switch request {
     case .getGroupsList:
         presenter?.presentData(response: .presentGroups(groups: allGroups))
+    case .getGroupsListFiltered(let searchText, let target):
+        searchManager.searchingFilter(for: searchText, in: target)
+        presenter?.presentData(response: .presentGroups(groups: searchManager.searchingResult))
     @unknown default:
         print("add new case")
     }
