@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Newsfeed View Controller-->
+        <!--Newsfeed-->
         <scene sceneID="fw9-TJ-Tur">
             <objects>
                 <viewController id="EXM-Cw-wCt" customClass="NewsfeedViewController" customModule="GB_VK" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,7 +47,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q28-LY-Sjv"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ubr-OP-38w"/>
+                    <navigationItem key="navigationItem" title="Newsfeed" id="ubr-OP-38w"/>
                     <connections>
                         <outlet property="tableView" destination="X6F-zg-03o" id="RCX-z5-JtE"/>
                     </connections>
@@ -67,6 +67,9 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.44148933889999997" green="0.61401605609999999" blue="0.87524849179999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

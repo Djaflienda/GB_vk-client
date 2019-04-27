@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Friends View Controller-->
+        <!--Friends-->
         <scene sceneID="L4o-2q-FSa">
             <objects>
                 <viewController id="e57-XB-VcH" customClass="FriendsViewController" customModule="GB_VK" customModuleProvider="target" sceneMemberID="viewController">
@@ -44,7 +44,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dVM-HX-hZ3"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tej-YK-shr"/>
+                    <navigationItem key="navigationItem" title="Friends" id="tej-YK-shr"/>
                     <connections>
                         <outlet property="searchBar" destination="3P1-EX-jOf" id="u5H-zK-gj6"/>
                         <outlet property="tableView" destination="ljc-pg-hkC" id="Ypu-QW-F7x"/>
@@ -65,6 +65,9 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.44148933889999997" green="0.61401605609999999" blue="0.87524849179999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

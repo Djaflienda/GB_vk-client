@@ -60,7 +60,6 @@
 		FA7677F1225B63E30000D39A /* FriendPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7677F0225B63E30000D39A /* FriendPhotoCell.swift */; };
 		FA9B3A172261C5A4009F2CB4 /* RoundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B3A162261C5A4009F2CB4 /* RoundShadowView.swift */; };
 		FA9B3A1922630CD0009F2CB4 /* CustomControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B3A1822630CD0009F2CB4 /* CustomControl.swift */; };
-		FA9B3A1B2263101A009F2CB4 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B3A1A2263101A009F2CB4 /* ControlViewController.swift */; };
 		FABF4F03226F935C00672BE4 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF4F02226F935C00672BE4 /* SearchManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -122,7 +121,6 @@
 		FA7677F0225B63E30000D39A /* FriendPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotoCell.swift; sourceTree = "<group>"; };
 		FA9B3A162261C5A4009F2CB4 /* RoundShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShadowView.swift; sourceTree = "<group>"; };
 		FA9B3A1822630CD0009F2CB4 /* CustomControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControl.swift; sourceTree = "<group>"; };
-		FA9B3A1A2263101A009F2CB4 /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
 		FABF4F02226F935C00672BE4 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,8 +201,8 @@
 		FA4583112272015900A2E725 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				FA27854922591A200034B838 /* AuthenticationVC.swift */,
 				FA4583122272024100A2E725 /* Authentication.storyboard */,
+				FA27854922591A200034B838 /* AuthenticationVC.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -321,7 +319,6 @@
 				FA5D56ED2259CFCA000FAEF6 /* Login */,
 				FA5D56EE2259CFD7000FAEF6 /* Friends */,
 				FA5D56EF2259D006000FAEF6 /* Groups */,
-				FA9B3A1A2263101A009F2CB4 /* ControlViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -539,7 +536,6 @@
 				FA27854A22591A200034B838 /* AuthenticationVC.swift in Sources */,
 				FA4583582274377600A2E725 /* GroupsPresenter.swift in Sources */,
 				FA5D56F82259D998000FAEF6 /* Friend.swift in Sources */,
-				FA9B3A1B2263101A009F2CB4 /* ControlViewController.swift in Sources */,
 				FA4583482273747700A2E725 /* FriendsViewController.swift in Sources */,
 				FA7677EC225AABD10000D39A /* UIViewControllerAlerts.swift in Sources */,
 				FA27854822591A200034B838 /* AppDelegate.swift in Sources */,

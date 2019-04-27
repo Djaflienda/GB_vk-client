@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FriendsDisplayLogic: class {
-  func displayData(viewModel: Friends.Model.ViewModel.ViewModelData)
+    func displayData(viewModel: Friends.Model.ViewModel.ViewModelData)
 }
 
 class FriendsViewController: UIViewController, FriendsDisplayLogic {
@@ -17,44 +17,44 @@ class FriendsViewController: UIViewController, FriendsDisplayLogic {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-  var interactor: FriendsBusinessLogic?
-  var router: (NSObjectProtocol & FriendsRoutingLogic)?
+    var interactor: FriendsBusinessLogic?
+    var router: (NSObjectProtocol & FriendsRoutingLogic)?
     private var friendsViewModel = FriendViewModel(cells: [])
   
-  // MARK: Setup
+    // MARK: Setup
   
-  private func setup() {
-    let viewController        = self
-    let interactor            = FriendsInteractor()
-    let presenter             = FriendsPresenter()
-    let router                = FriendsRouter()
-    viewController.interactor = interactor
-    viewController.router     = router
-    interactor.presenter      = presenter
-    presenter.viewController  = viewController
-    router.viewController     = viewController
-  }
-  
-  // MARK: Routing
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    setup()
-    tableView.register(UINib(nibName: "FriendCell", bundle: nil), forCellReuseIdentifier: FriendCell.reusableID)
-    interactor?.makeRequest(request: .getFriendsList)
-  }
-  
-  func displayData(viewModel: Friends.Model.ViewModel.ViewModelData) {
-    switch viewModel {
-    case .displayFriends(let viewModel):
-        self.friendsViewModel = viewModel
-        tableView.reloadData()
-    @unknown default:
-        print("add new case")
+    private func setup() {
+        let viewController        = self
+        let interactor            = FriendsInteractor()
+        let presenter             = FriendsPresenter()
+        let router                = FriendsRouter()
+        viewController.interactor = interactor
+        viewController.router     = router
+        interactor.presenter      = presenter
+        presenter.viewController  = viewController
+        router.viewController     = viewController
     }
-  }
+  
+    // MARK: Routing
+  
+    // MARK: View lifecycle
+  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+        tableView.register(UINib(nibName: "FriendCell", bundle: nil), forCellReuseIdentifier: FriendCell.reusableID)
+        interactor?.makeRequest(request: .getFriendsList)
+    }
+  
+    func displayData(viewModel: Friends.Model.ViewModel.ViewModelData) {
+        switch viewModel {
+        case .displayFriends(let viewModel):
+            self.friendsViewModel = viewModel
+            tableView.reloadData()
+        @unknown default:
+            print("add new case")
+        }
+    }
 }
 
 extension FriendsViewController: UITableViewDelegate {
