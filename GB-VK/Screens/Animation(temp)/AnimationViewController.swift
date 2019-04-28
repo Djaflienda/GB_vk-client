@@ -26,7 +26,6 @@ class AnimationViewController: UIViewController {
     }
     
     @objc func tapped() {
-        print("123")
         UIView.animate(withDuration: 0.1, animations: {
             self.image.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }) { (_) in
