@@ -16,6 +16,17 @@ class AnimationViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     
     @IBAction func imageTapped(_ sender: UIButton) {
+//        UIView.animate(withDuration: 0.1, animations: {
+//            self.image.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+//        }) { (_) in
+//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: [], animations: {
+//                self.image.transform = .identity
+//            }, completion: nil)
+//        }
+    }
+    
+    @objc func tapped() {
+        print("123")
         UIView.animate(withDuration: 0.1, animations: {
             self.image.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }) { (_) in
@@ -24,11 +35,12 @@ class AnimationViewController: UIViewController {
             }, completion: nil)
         }
     }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        image.addGestureRecognizer(tapGR)
+        image.isUserInteractionEnabled = true
 //        UIView.animate(withDuration: 0.6, delay: 0, options: [.repeat], animations: {
 //            self.view1.alpha = 0.1
 //        }) { (true) in
@@ -72,4 +84,21 @@ class AnimationViewController: UIViewController {
     }
     */
 
+}
+
+
+
+class LoadingIndicator: UIView {
+    
+    private let indicators: [UIView] = (0...2).map { _ in
+        let c = UIView()
+        c.backgroundColor = .gray
+        return c
+    }
+    
+    static func showIndicator() {
+        
+    }
+    
+    static func removeIndicator() {}
 }

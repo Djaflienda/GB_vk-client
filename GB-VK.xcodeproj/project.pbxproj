@@ -47,6 +47,7 @@
 		FA458365227438B300A2E725 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA458363227438B300A2E725 /* GroupCell.xib */; };
 		FA4583682274962F00A2E725 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4583672274962F00A2E725 /* AnimationViewController.swift */; };
 		FA45836A2274963A00A2E725 /* Animation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4583692274963A00A2E725 /* Animation.storyboard */; };
+		FA45836C2275934700A2E725 /* NewsfeedLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45836B2275934700A2E725 /* NewsfeedLayoutCalculator.swift */; };
 		FA5D56E522593A72000FAEF6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D56E422593A72000FAEF6 /* LoginViewController.swift */; };
 		FA5D56E7225966D8000FAEF6 /* FriendsViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D56E6225966D8000FAEF6 /* FriendsViewController1.swift */; };
 		FA5D56E9225968AC000FAEF6 /* FriendPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D56E8225968AC000FAEF6 /* FriendPhotosViewController.swift */; };
@@ -110,6 +111,7 @@
 		FA458363227438B300A2E725 /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
 		FA4583672274962F00A2E725 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		FA4583692274963A00A2E725 /* Animation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Animation.storyboard; sourceTree = "<group>"; };
+		FA45836B2275934700A2E725 /* NewsfeedLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedLayoutCalculator.swift; sourceTree = "<group>"; };
 		FA5D56E422593A72000FAEF6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA5D56E6225966D8000FAEF6 /* FriendsViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController1.swift; sourceTree = "<group>"; };
 		FA5D56E8225968AC000FAEF6 /* FriendPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotosViewController.swift; sourceTree = "<group>"; };
@@ -241,8 +243,9 @@
 		FA458339227320D900A2E725 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				FA458335227320D400A2E725 /* NewsfeedCell.swift */,
 				FA458336227320D400A2E725 /* NewsfeedCell.xib */,
+				FA458335227320D400A2E725 /* NewsfeedCell.swift */,
+				FA45836B2275934700A2E725 /* NewsfeedLayoutCalculator.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				FA458337227320D400A2E725 /* NewsfeedCell.swift in Sources */,
 				FA5D56F62259D8F4000FAEF6 /* FriendCell.swift in Sources */,
 				FA4583452273747700A2E725 /* FriendsWorker.swift in Sources */,
+				FA45836C2275934700A2E725 /* NewsfeedLayoutCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
