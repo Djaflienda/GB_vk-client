@@ -18,6 +18,14 @@ protocol NewsfeedCellViewModel {
     var shares: String? { get }
     var views: String? { get }
     var photoAttachment: NewsfeedCellPhotoAttachmentViewModel? { get }
+    var sizes: NewsfeedCellSizes { get }
+}
+
+protocol NewsfeedCellSizes {
+    var bodyLableFrame: CGRect { get }
+    var postImageViewFrame: CGRect { get }
+    var bottomView: CGRect { get }
+    var totalHeight: CGFloat { get }
 }
 
 protocol NewsfeedCellPhotoAttachmentViewModel {
@@ -39,6 +47,13 @@ class NewsfeedCell: UITableViewCell {
     @IBOutlet weak var sharesLabel: UILabel!
     @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var postImageView: WebImageView!
+    @IBOutlet weak var bottomView: UIView!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarImage.set(imageURL: nil)
+        postImageView.set(imageURL: nil)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,6 +76,11 @@ class NewsfeedCell: UITableViewCell {
         commentLabel.text = data.comments
         sharesLabel.text = data.shares
         viewsLabel.text = data.views
+        
+        bodyLabel.frame = data.sizes.bodyLableFrame
+        postImageView.frame = data.sizes.postImageViewFrame
+        bottomView.frame = data.sizes.bottomView
+        
         if let photoAttachment = data.photoAttachment {
             postImageView.set(imageURL: photoAttachment.photoUrlString)
             postImageView.isHidden = false
@@ -68,5 +88,4 @@ class NewsfeedCell: UITableViewCell {
             postImageView.isHidden = true
         }
     }
-    
 }

@@ -59,6 +59,7 @@
                         <segue destination="5ej-ly-5M5" kind="relationship" relationship="viewControllers" id="BmH-Yc-QvW"/>
                         <segue destination="aEL-Ey-Hr1" kind="relationship" relationship="viewControllers" id="zSZ-n9-c1a"/>
                         <segue destination="eHN-d1-VxY" kind="relationship" relationship="viewControllers" id="C5i-bJ-nLC"/>
+                        <segue destination="DsG-0x-kiA" kind="relationship" relationship="viewControllers" id="Z33-kT-bqG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f84-dP-PeE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -73,7 +74,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cu-pv-zT0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1712" y="-158"/>
+            <point key="canvasLocation" x="1782" y="-69"/>
         </scene>
         <!--Friends-->
         <scene sceneID="8KQ-VO-GVd">
@@ -83,7 +84,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v7h-dH-NYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1707" y="72"/>
+            <point key="canvasLocation" x="1706" y="-25"/>
         </scene>
         <!--Groups-->
         <scene sceneID="3c3-HN-ebK">
@@ -93,7 +94,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="89b-c4-9h1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1690" y="222"/>
+            <point key="canvasLocation" x="1704" y="19"/>
+        </scene>
+        <!--Animation-->
+        <scene sceneID="dwS-TV-xuV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Animation" id="DsG-0x-kiA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Animation" id="WAB-Ua-543"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8wJ-2k-QSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1794" y="177"/>
         </scene>
     </scenes>
 </document>

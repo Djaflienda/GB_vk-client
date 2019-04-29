@@ -35,18 +35,26 @@ class CustomControl: UIControl {
         self.likeLabel.textAlignment = .right
         
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(likeTapped))
-//        self.addGestureRecognizer(tapGR)
+        self.addGestureRecognizer(tapGR)
 //        OR
-        likeView.isUserInteractionEnabled = true
-        likeView.addGestureRecognizer(tapGR)
+//        likeView.isUserInteractionEnabled = true
+//        likeView.addGestureRecognizer(tapGR)
     }
     
     @objc func likeTapped() {
         isLiked.toggle()
-        self.likeView.image = self.isLiked ? UIImage(named: "heart-filled")
-                                           : UIImage(named: "heart-empty")
-        self.likeLabel.text = self.isLiked ? "1" : "0"
+        
+        UIView.transition(with: self.likeLabel, duration: 0.15, options: .transitionFlipFromRight, animations: { self.likeLabel.text = self.isLiked ? "1" : "0" }, completion: { _ in
+            UIView.transition(with: self.likeView, duration: 0.3, options: .transitionFlipFromTop, animations: {
+                self.likeView.image = self.isLiked ? UIImage(named: "heart-filled") : UIImage(named: "heart-empty") }, completion: nil)
+        })
         self.likeLabel.textColor = self.isLiked ? .red : .black
+
+//        UIView.transition(with: self, duration: 0.3, options: .transitionFlipFromTop, animations: {
+//            self.likeView.image = self.isLiked ? UIImage(named: "heart-filled") : UIImage(named: "heart-empty")
+//            self.likeLabel.text = self.isLiked ? "1" : "0"
+//            self.likeLabel.textColor = self.isLiked ? .red : .black
+//        }, completion: nil)
         sendActions(for: .valueChanged)
     }
     

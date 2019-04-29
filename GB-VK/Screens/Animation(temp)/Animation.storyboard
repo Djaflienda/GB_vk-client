@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="37v-NC-0hX">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Animation-->
+        <scene sceneID="QGa-de-xE8">
+            <objects>
+                <viewController id="37v-NC-0hX" customClass="AnimationViewController" customModule="GB_VK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RKY-ed-H0H">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="w8U-yK-EfP">
+                                <rect key="frame" x="167" y="258" width="80" height="20"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rqs-mC-RhT">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="fFN-r5-hxR"/>
+                                            <constraint firstAttribute="height" constant="20" id="sXV-TS-u6x"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIp-ax-Nbn">
+                                        <rect key="frame" x="30" y="0.0" width="20" height="20"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="5As-xV-Ra7"/>
+                                            <constraint firstAttribute="width" constant="20" id="Qhx-zh-9NB"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6b2-RJ-KvJ">
+                                        <rect key="frame" x="60" y="0.0" width="20" height="20"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="Odp-2z-diK"/>
+                                            <constraint firstAttribute="height" constant="20" id="Vms-PM-Bm2"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Vrd-6Y-hIQ"/>
+                                    <constraint firstAttribute="width" constant="80" id="ioI-qv-acj"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDI-r5-DXi" customClass="CustomControl" customModule="GB_VK" customModuleProvider="target">
+                                <rect key="frame" x="87" y="598" width="240" height="100"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="G6K-69-SfU"/>
+                                    <constraint firstAttribute="height" constant="100" id="P7C-ZI-COi"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friend0" translatesAutoresizingMaskIntoConstraints="NO" id="OCp-Bm-qPz">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="MRU-gJ-A1h"/>
+                                    <constraint firstAttribute="width" constant="240" id="eC0-y2-hPK"/>
+                                </constraints>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNY-gY-aJp">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="imageTapped:" destination="37v-NC-0hX" eventType="touchUpInside" id="D4N-Z9-due"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OCp-Bm-qPz" firstAttribute="centerX" secondItem="RKY-ed-H0H" secondAttribute="centerX" id="QhP-VU-DAk"/>
+                            <constraint firstItem="QDI-r5-DXi" firstAttribute="centerX" secondItem="RKY-ed-H0H" secondAttribute="centerX" id="UBu-Nm-Xbi"/>
+                            <constraint firstItem="w8U-yK-EfP" firstAttribute="centerX" secondItem="RKY-ed-H0H" secondAttribute="centerX" id="pho-qe-E7J"/>
+                            <constraint firstItem="OCp-Bm-qPz" firstAttribute="top" secondItem="w8U-yK-EfP" secondAttribute="bottom" constant="50" id="qbg-l6-nPi"/>
+                            <constraint firstItem="QDI-r5-DXi" firstAttribute="top" secondItem="OCp-Bm-qPz" secondAttribute="bottom" constant="30" id="qxQ-5c-vwy"/>
+                            <constraint firstItem="OCp-Bm-qPz" firstAttribute="centerY" secondItem="RKY-ed-H0H" secondAttribute="centerY" id="uKq-MD-WcE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ba0-nz-xMU"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Animation" id="zaH-ac-ZBY"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="image" destination="OCp-Bm-qPz" id="yt6-vX-8d9"/>
+                        <outlet property="view1" destination="rqs-mC-RhT" id="TPy-rJ-ct2"/>
+                        <outlet property="view2" destination="fIp-ax-Nbn" id="Yrc-gw-6Kj"/>
+                        <outlet property="view3" destination="6b2-RJ-KvJ" id="NBl-CQ-ARd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgO-lQ-ObR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="73.913043478260875" y="112.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="friend0" width="242" height="241"/>
+    </resources>
+</document>

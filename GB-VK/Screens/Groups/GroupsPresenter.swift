@@ -18,9 +18,8 @@ class GroupsPresenter: GroupsPresentationLogic {
   func presentData(response: Groups.Model.Response.ResponseType) {
     switch response {
     case .presentGroups(let groups):
-        let cells = groups.map { (group) in
-            cellViewModel(from: group)
-        }
+        let cells = groups.filter{$0.isParticipating}
+                          .map {cellViewModel(from: $0)} //fix this .filter->.map
         let viewModel = GroupsViewModel(cells: cells)
         viewController?.displayData(viewModel: .displayGroups(viewModel: viewModel))
     @unknown default:

@@ -41,7 +41,8 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        tableView.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseID)
+//        tableView.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseID)
+        tableView.register(NewsfeedCodeCell.self, forCellReuseIdentifier: NewsfeedCodeCell.reuseID)
         interactor?.makeRequest(request: .getNewsfeed)
     }
   
@@ -58,7 +59,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
 
 extension NewsfeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 212.0
+        return newsfeedViewModel.cells[indexPath.row].sizes.totalHeight
     }
 }
 
@@ -68,7 +69,8 @@ extension NewsfeedViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCell.reuseID, for: indexPath) as! NewsfeedCell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCell.reuseID, for: indexPath) as! NewsfeedCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCodeCell.reuseID, for: indexPath) as! NewsfeedCodeCell
         cell.configure(with: newsfeedViewModel.cells[indexPath.row])
         return cell
     }

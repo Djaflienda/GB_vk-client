@@ -9,12 +9,14 @@
 import UIKit
 
 protocol NewsfeedPresentationLogic {
-  func presentData(response: Newsfeed.Model.Response.ResponseType)
+    func presentData(response: Newsfeed.Model.Response.ResponseType)
 }
 
 class NewsfeedPresenter: NewsfeedPresentationLogic {
-  weak var viewController: NewsfeedDisplayLogic?
-    let dateFormatter: DateFormatter = {
+    
+    weak var viewController: NewsfeedDisplayLogic?
+    private var newsfeedCellLayoutCalculator = NewsfeedLayoutCalculator()
+    private let dateFormatter: DateFormatter = {
         let dt = DateFormatter()
         dt.locale = Locale(identifier: "ru_RU")
         dt.dateFormat = "d MMM 'в' HH:mm"
@@ -24,13 +26,10 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
     func presentData(response: Newsfeed.Model.Response.ResponseType) {
         switch response {
         case .presentNewsfeed(let response):
-            
             let cells = response.items.map { (newsfeedItem) in
                 cellViewModel(from: newsfeedItem, profiles: response.profiles, groups: response.groups)
             }
-            
             let viewModel = NewsfeedViewModel(cells: cells)
-            
             viewController?.displayData(viewModel: .displayNewsfeed(viewModel: viewModel))
         @unknown default:
             print("add new case")
@@ -42,6 +41,7 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
         let photoAttachment = self.photoAttachment(newsfeedItem: newsfeedItem)
         let date = Date(timeIntervalSince1970: newsfeedItem.date)
         let dateTitle = dateFormatter.string(from: date)
+        let sizes = newsfeedCellLayoutCalculator.sizes(bodyText: newsfeedItem.text, photoAttachment: photoAttachment)
         return NewsfeedViewModel.Cell(avatarUrlString: profile.photo,
                                       title: profile.name,
                                       date: dateTitle,
@@ -50,7 +50,8 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
                                       comments: String(newsfeedItem.comments?.count ?? 0),
                                       shares: String(newsfeedItem.reposts?.count ?? 0),
                                       views: String(newsfeedItem.views?.count ?? 0),
-                                      photoAttachment: photoAttachment)
+                                      photoAttachment: photoAttachment,
+                                      sizes: sizes)
     }
     
     private func profile(for sourceId: Int, profiles: [Profile], groups: [NewsfeedGroup]) -> ProfileRepresentable {
