@@ -19,7 +19,7 @@ class FriendsViewController: UIViewController, FriendsDisplayLogic {
     
     var interactor: FriendsBusinessLogic?
     var router: (NSObjectProtocol & FriendsRoutingLogic)?
-    private var friendsViewModel = FriendViewModel(cells: [])
+    var friendsViewModel = FriendViewModel(cells: [])
   
     // MARK: Setup
   
@@ -58,6 +58,11 @@ class FriendsViewController: UIViewController, FriendsDisplayLogic {
 }
 
 extension FriendsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        router?.routeToFriendPhotos(segue: nil)
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 56
     }

@@ -9,13 +9,28 @@
 import UIKit
 
 protocol FriendsRoutingLogic {
-
+    func routeToFriendPhotos(segue: UIStoryboardSegue?)
 }
 
 class FriendsRouter: NSObject, FriendsRoutingLogic {
-
-  weak var viewController: FriendsViewController?
-  
+    
+    weak var viewController: FriendsViewController?
+    
   // MARK: Routing
   
+    func routeToFriendPhotos(segue: UIStoryboardSegue?) {
+        if let _ = segue {
+            
+        } else {
+            let storyboard = UIStoryboard(name: "FriendPhotos", bundle: nil)
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "FriendPhotos") as! FriendPhotosViewController
+            navigateToFriendPhotos(source: viewController!, destination: destinationVC)
+        }
+    }
+    
+    //MARK: Navigation
+    
+    private func navigateToFriendPhotos(source: FriendsViewController, destination: FriendPhotosViewController) {
+        source.navigationController?.pushViewController(destination, animated: true)
+    }
 }

@@ -9,11 +9,12 @@
 import UIKit
 
 protocol NewsfeedPresentationLogic {
-  func presentData(response: Newsfeed.Model.Response.ResponseType)
+    func presentData(response: Newsfeed.Model.Response.ResponseType)
 }
 
 class NewsfeedPresenter: NewsfeedPresentationLogic {
-  weak var viewController: NewsfeedDisplayLogic?
+    
+    weak var viewController: NewsfeedDisplayLogic?
     private var newsfeedCellLayoutCalculator = NewsfeedLayoutCalculator()
     private let dateFormatter: DateFormatter = {
         let dt = DateFormatter()
@@ -25,13 +26,10 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
     func presentData(response: Newsfeed.Model.Response.ResponseType) {
         switch response {
         case .presentNewsfeed(let response):
-            
             let cells = response.items.map { (newsfeedItem) in
                 cellViewModel(from: newsfeedItem, profiles: response.profiles, groups: response.groups)
             }
-            
             let viewModel = NewsfeedViewModel(cells: cells)
-            
             viewController?.displayData(viewModel: .displayNewsfeed(viewModel: viewModel))
         @unknown default:
             print("add new case")
