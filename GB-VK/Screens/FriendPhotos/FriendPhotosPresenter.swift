@@ -21,8 +21,6 @@ class FriendPhotosPresenter: FriendPhotosPresentationLogic {
             let cell = cellViewModel(from: friend)
             let viewModel = FriendPhotoViewModel(cells: [cell])
             viewController?.displayData(viewModel: .displayFriendPhotos(viewModel: viewModel))
-        @unknown default:
-            print("add new case")
         }
     }
     

@@ -9,11 +9,12 @@
 import UIKit
 
 protocol NewsfeedCellLayoutCalculatorProtocol {
-    func sizes(bodyText: String?, photoAttachment: NewsfeedCellPhotoAttachmentViewModel?) -> NewsfeedCellSizes
+    func sizes(bodyText: String?, photoAttachment: NewsfeedCellPhotoAttachmentViewModel?, isFullSizedPost: Bool) -> NewsfeedCellSizes
 }
 
 struct Sizes: NewsfeedCellSizes {
     var bodyLableFrame: CGRect
+    var moreTextButtonFrame: CGRect
     var postImageViewFrame: CGRect
     var bottomView: CGRect
     var totalHeight: CGFloat
@@ -31,18 +32,39 @@ final class NewsfeedLayoutCalculator: NewsfeedCellLayoutCalculatorProtocol {
         self.screenWidth = screenWidth
     }
     
-    func sizes(bodyText: String?, photoAttachment: NewsfeedCellPhotoAttachmentViewModel?) -> NewsfeedCellSizes {
+    func sizes(bodyText: String?, photoAttachment: NewsfeedCellPhotoAttachmentViewModel?, isFullSizedPost: Bool) -> NewsfeedCellSizes {
+        
+        var showMoreTextButton = false
         
         var bodyLabelFrame = CGRect(origin: CGPoint(x: 10, y: 56),
                                     size: CGSize.zero)
         
         if let text = bodyText, !text.isEmpty {
             let width = screenWidth - 20
-            let height = text.height(width: width, font: UIFont.systemFont(ofSize: 15))
+            var height = text.height(width: width, font: UIFont.systemFont(ofSize: 15))
+            
+            let limitHeight = (UIFont.systemFont(ofSize: 15).lineHeight) * CGFloat(8)
+            
+            if !isFullSizedPost && height > limitHeight {
+                height = (UIFont.systemFont(ofSize: 15).lineHeight) * CGFloat(6)
+                showMoreTextButton = true
+            }
+            
             bodyLabelFrame.size = CGSize(width: width, height: height)
         }
         
-        let postImageViewTop = bodyLabelFrame.size == CGSize.zero ? 64 : bodyLabelFrame.maxY + 8
+        var moreTextButtonSize = CGSize.zero
+        
+        if showMoreTextButton {
+            moreTextButtonSize = CGSize(width: 160, height: 30)
+        }
+        
+        let moreTextButtonOrigin = CGPoint(x: 10, y: bodyLabelFrame.maxY)
+        
+        let moreTextButtonFrame = CGRect(origin: moreTextButtonOrigin, size: moreTextButtonSize)
+        
+        
+        let postImageViewTop = bodyLabelFrame.size == CGSize.zero ? 64 : moreTextButtonFrame.maxY + 8
         
         var postImageViewFrame = CGRect(origin: CGPoint(x: 0, y: postImageViewTop),
                                         size: CGSize.zero)
@@ -53,11 +75,12 @@ final class NewsfeedLayoutCalculator: NewsfeedCellLayoutCalculatorProtocol {
         }
         
         let bottomViewTop = max(bodyLabelFrame.maxY, postImageViewFrame.maxY)
-        let bottomViewFrame = CGRect(origin: CGPoint(x: 0, y: bottomViewTop + 8), size: CGSize(width: postImageViewFrame.size.width, height: 40))
+//        let bottomViewWidth = max(bodyLabelFrame.width, postImageViewFrame.width)
+        let bottomViewFrame = CGRect(origin: CGPoint(x: 0, y: bottomViewTop + 8), size: CGSize(width: /*postImageViewFrame.size.width*//*bottomViewWidth*/screenWidth - 4, height: 40))
         
         
         let totalHeight = bottomViewFrame.maxY + 8
         
-        return Sizes(bodyLableFrame: bodyLabelFrame, postImageViewFrame: postImageViewFrame, bottomView: bottomViewFrame, totalHeight: totalHeight)
+        return Sizes(bodyLableFrame: bodyLabelFrame, moreTextButtonFrame: moreTextButtonFrame, postImageViewFrame: postImageViewFrame, bottomView: bottomViewFrame, totalHeight: totalHeight)
     }
 }

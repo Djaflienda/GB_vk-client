@@ -8,6 +8,9 @@
 
 import UIKit
 
+//IS NOT USED IN PROJECT BY DEFAUL
+//TO USE CELL FROM XIB -> REGISTER CELL
+
 protocol NewsfeedCellViewModel {
     var avatarUrlString: String { get }
     var title: String { get }
@@ -26,6 +29,7 @@ protocol NewsfeedCellSizes {
     var postImageViewFrame: CGRect { get }
     var bottomView: CGRect { get }
     var totalHeight: CGFloat { get }
+    var moreTextButtonFrame: CGRect { get }
 }
 
 protocol NewsfeedCellPhotoAttachmentViewModel {
@@ -57,14 +61,11 @@ class NewsfeedCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         backgroundColor = .clear
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func configure(with data: NewsfeedCellViewModel) {

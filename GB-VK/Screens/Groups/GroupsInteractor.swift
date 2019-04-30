@@ -28,8 +28,6 @@ class GroupsInteractor: GroupsBusinessLogic {
     case .getGroupsListFiltered(let searchText, let target):
         searchManager.searchingFilter(for: searchText, in: target)
         presenter?.presentData(response: .presentGroups(groups: searchManager.searchingResult))
-    @unknown default:
-        print("add new case")
     }
   }
   

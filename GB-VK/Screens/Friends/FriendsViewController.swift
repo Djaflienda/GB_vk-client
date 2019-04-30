@@ -34,9 +34,7 @@ class FriendsViewController: UIViewController, FriendsDisplayLogic {
         presenter.viewController  = viewController
         router.viewController     = viewController
     }
-  
-    // MARK: Routing
-  
+
     // MARK: View lifecycle
   
     override func viewDidLoad() {
@@ -51,8 +49,6 @@ class FriendsViewController: UIViewController, FriendsDisplayLogic {
         case .displayFriends(let viewModel):
             self.friendsViewModel = viewModel
             tableView.reloadData()
-        @unknown default:
-            print("add new case")
         }
     }
 }

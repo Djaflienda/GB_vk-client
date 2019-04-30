@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DataFetcher {
-    func getNewsfeed(response: @escaping (NewsfeedResponse?)->Void)
+    func getNewsfeed(nextBatchFrom: String?, response: @escaping (NewsfeedResponse?)->Void)
 }
 
 struct NetworkDataFetcher: DataFetcher {
@@ -20,8 +20,9 @@ struct NetworkDataFetcher: DataFetcher {
         self.networkingManager = networking
     }
     
-    func getNewsfeed(response: @escaping (NewsfeedResponse?) -> Void) {
-        let parameters = ["filters": "post, photo"]
+    func getNewsfeed(nextBatchFrom: String?, response: @escaping (NewsfeedResponse?) -> Void) {
+        var parameters = ["filters": "post, photo"]
+        parameters["start_from"] = nextBatchFrom
         networkingManager.request(path: API.newsfeedPath, parameters: parameters) { (data, error) in
             if let error = error {
                 print("\(error.localizedDescription)")
