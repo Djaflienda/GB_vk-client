@@ -52,8 +52,6 @@ class GroupsViewController: UIViewController, GroupsDisplayLogic {
     case .displayGroups(let viewModel):
         self.groupsViewModel = viewModel
         tableView.reloadData()
-    @unknown default:
-        print("add new case")
     }
   }
 }

@@ -58,6 +58,10 @@
 		FA4583812276CFD600A2E725 /* FriendPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4583802276CFD600A2E725 /* FriendPhotoCell.swift */; };
 		FA5CEFBC22771BAD009579ED /* String+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CEFBB22771BAD009579ED /* String+Height.swift */; };
 		FA5CEFBE22773CD9009579ED /* NewsfeedCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CEFBD22773CD9009579ED /* NewsfeedCodeCell.swift */; };
+		FA5CEFC122786C08009579ED /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CEFC022786C08009579ED /* FooterView.swift */; };
+		FA5CEFC522787C18009579ED /* NewsfeedCellTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CEFC422787C18009579ED /* NewsfeedCellTopView.swift */; };
+		FA5CEFC72278821F009579ED /* extUIViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CEFC62278821F009579ED /* extUIViewLayout.swift */; };
+		FA5CEFC9227882E8009579ED /* NewsfeedCellBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5CEFC8227882E8009579ED /* NewsfeedCellBottomView.swift */; };
 		FA5D56E522593A72000FAEF6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D56E422593A72000FAEF6 /* LoginViewController.swift */; };
 		FA5D56E7225966D8000FAEF6 /* FriendsViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D56E6225966D8000FAEF6 /* FriendsViewController1.swift */; };
 		FA5D56F12259D01F000FAEF6 /* GroupsViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D56F02259D01F000FAEF6 /* GroupsViewController1.swift */; };
@@ -130,6 +134,10 @@
 		FA4583802276CFD600A2E725 /* FriendPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotoCell.swift; sourceTree = "<group>"; };
 		FA5CEFBB22771BAD009579ED /* String+Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Height.swift"; sourceTree = "<group>"; };
 		FA5CEFBD22773CD9009579ED /* NewsfeedCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCodeCell.swift; sourceTree = "<group>"; };
+		FA5CEFC022786C08009579ED /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		FA5CEFC422787C18009579ED /* NewsfeedCellTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCellTopView.swift; sourceTree = "<group>"; };
+		FA5CEFC62278821F009579ED /* extUIViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extUIViewLayout.swift; sourceTree = "<group>"; };
+		FA5CEFC8227882E8009579ED /* NewsfeedCellBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCellBottomView.swift; sourceTree = "<group>"; };
 		FA5D56E422593A72000FAEF6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA5D56E6225966D8000FAEF6 /* FriendsViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController1.swift; sourceTree = "<group>"; };
 		FA5D56F02259D01F000FAEF6 /* GroupsViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController1.swift; sourceTree = "<group>"; };
@@ -246,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				FA458339227320D900A2E725 /* Cell */,
+				FA5CEFBF22786BFB009579ED /* FooterView */,
 				FA4583332273118B00A2E725 /* NewsfeedViewController.storyboard */,
 				FA45832922730BDB00A2E725 /* NewsfeedViewController.swift */,
 				FA45832A22730BDB00A2E725 /* NewsfeedInteractor.swift */,
@@ -260,10 +269,9 @@
 		FA458339227320D900A2E725 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				FA458336227320D400A2E725 /* NewsfeedCell.xib */,
-				FA458335227320D400A2E725 /* NewsfeedCell.swift */,
+				FA5CEFC322787B8B009579ED /* Programmatically */,
+				FA5CEFC2227875CA009579ED /* XIB */,
 				FA45836B2275934700A2E725 /* NewsfeedLayoutCalculator.swift */,
-				FA5CEFBD22773CD9009579ED /* NewsfeedCodeCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -349,6 +357,33 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		FA5CEFBF22786BFB009579ED /* FooterView */ = {
+			isa = PBXGroup;
+			children = (
+				FA5CEFC022786C08009579ED /* FooterView.swift */,
+			);
+			path = FooterView;
+			sourceTree = "<group>";
+		};
+		FA5CEFC2227875CA009579ED /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				FA458336227320D400A2E725 /* NewsfeedCell.xib */,
+				FA458335227320D400A2E725 /* NewsfeedCell.swift */,
+			);
+			path = XIB;
+			sourceTree = "<group>";
+		};
+		FA5CEFC322787B8B009579ED /* Programmatically */ = {
+			isa = PBXGroup;
+			children = (
+				FA5CEFBD22773CD9009579ED /* NewsfeedCodeCell.swift */,
+				FA5CEFC422787C18009579ED /* NewsfeedCellTopView.swift */,
+				FA5CEFC8227882E8009579ED /* NewsfeedCellBottomView.swift */,
+			);
+			path = Programmatically;
+			sourceTree = "<group>";
+		};
 		FA5D56EA2259CF95000FAEF6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +462,7 @@
 		FA7677EA225AABB80000D39A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				FA5CEFC62278821F009579ED /* extUIViewLayout.swift */,
 				FA7677EB225AABD10000D39A /* UIViewControllerAlerts.swift */,
 				FA5CEFBB22771BAD009579ED /* String+Height.swift */,
 			);
@@ -575,12 +611,14 @@
 				FA45835D2274377600A2E725 /* GroupsInteractor.swift in Sources */,
 				FA5D56F12259D01F000FAEF6 /* GroupsViewController1.swift in Sources */,
 				FABF4F03226F935C00672BE4 /* SearchManager.swift in Sources */,
+				FA5CEFC72278821F009579ED /* extUIViewLayout.swift in Sources */,
 				FA45832C22730BDB00A2E725 /* NewsfeedPresenter.swift in Sources */,
 				FA4583462273747700A2E725 /* FriendsRouter.swift in Sources */,
 				FA45832F22730BDB00A2E725 /* NewsfeedModels.swift in Sources */,
 				FA5CEFBE22773CD9009579ED /* NewsfeedCodeCell.swift in Sources */,
 				FA4583772276CA1600A2E725 /* FriendPhotosWorker.swift in Sources */,
 				FA45837A2276CA1600A2E725 /* FriendPhotosViewController.swift in Sources */,
+				FA5CEFC122786C08009579ED /* FooterView.swift in Sources */,
 				FA9B3A172261C5A4009F2CB4 /* RoundShadowView.swift in Sources */,
 				FA5D56F32259D206000FAEF6 /* SearchGroupViewController.swift in Sources */,
 				FA9B3A1922630CD0009F2CB4 /* CustomControl.swift in Sources */,
@@ -591,9 +629,11 @@
 				FA5CEFBC22771BAD009579ED /* String+Height.swift in Sources */,
 				FA4583222272FEEB00A2E725 /* NetworkDataFetcher.swift in Sources */,
 				FA27854A22591A200034B838 /* AuthenticationVC.swift in Sources */,
+				FA5CEFC522787C18009579ED /* NewsfeedCellTopView.swift in Sources */,
 				FA4583582274377600A2E725 /* GroupsPresenter.swift in Sources */,
 				FA5D56F82259D998000FAEF6 /* Friend.swift in Sources */,
 				FA4583482273747700A2E725 /* FriendsViewController.swift in Sources */,
+				FA5CEFC9227882E8009579ED /* NewsfeedCellBottomView.swift in Sources */,
 				FA7677EC225AABD10000D39A /* UIViewControllerAlerts.swift in Sources */,
 				FA27854822591A200034B838 /* AppDelegate.swift in Sources */,
 				FA7677E4225A8A5D0000D39A /* MockData.swift in Sources */,

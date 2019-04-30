@@ -25,8 +25,6 @@ class FriendsPresenter: FriendsPresentationLogic {
         let viewModel = FriendViewModel(cells: cells)
         
         viewController?.displayData(viewModel: .displayFriends(viewModel: viewModel))
-    @unknown default:
-        print("add new case")
     }
   }
     

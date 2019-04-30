@@ -22,8 +22,6 @@ class GroupsPresenter: GroupsPresentationLogic {
                           .map {cellViewModel(from: $0)} //fix this .filter->.map
         let viewModel = GroupsViewModel(cells: cells)
         viewController?.displayData(viewModel: .displayGroups(viewModel: viewModel))
-    @unknown default:
-        print("add new case")
     }
   }
     

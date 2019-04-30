@@ -17,18 +17,22 @@ enum Newsfeed {
     struct Request {
       enum RequestType {
         case getNewsfeed
+        case getNewsfeedBatch
+        case revealPostIds(postId: Int) //expand post textView if "Show more" button tapped
       }
     }
     
     struct Response {
       enum ResponseType {
-        case presentNewsfeed(response: NewsfeedResponse)
+        case presentNewsfeed(response: NewsfeedResponse, revealPostIds: [Int])
+        case presentFooterLoader
       }
     }
     
     struct ViewModel {
       enum ViewModelData {
         case displayNewsfeed(viewModel: NewsfeedViewModel)
+        case displayFooterLoader
       }
     }
     
@@ -37,6 +41,7 @@ enum Newsfeed {
 
 struct NewsfeedViewModel {
     struct Cell: NewsfeedCellViewModel {
+        var postId: Int
         var avatarUrlString: String
         var title: String
         var date: String
@@ -56,4 +61,5 @@ struct NewsfeedViewModel {
     }
     
     let cells: [Cell]
+    let footerTitle: String?
 }

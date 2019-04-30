@@ -49,8 +49,6 @@ class FriendPhotosViewController: UIViewController, FriendPhotosDisplayLogic {
         case .displayFriendPhotos(let viewModel):
             self.friendPhotosViewModel = viewModel
             self.collectionView.reloadData()
-        @unknown default:
-            print("add new case")
         }
     }
   

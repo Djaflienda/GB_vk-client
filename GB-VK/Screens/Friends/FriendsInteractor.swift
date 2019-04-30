@@ -29,8 +29,6 @@ class FriendsInteractor: FriendsBusinessLogic {
         case .getFriendsListFiltered(let searchText, let target):
             searchManager.searchingFilter(for: searchText, in: target)
             presenter?.presentData(response: .presentFrieds(friends: searchManager.searchingResult))
-        @unknown default:
-            print("add new case")
         }
     }
 }

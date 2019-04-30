@@ -25,8 +25,6 @@ class FriendPhotosInteractor: FriendPhotosBusinessLogic {
     case .getFriendPhotos:
         print()
 //        presenter?.presentData(response: .presentFriendPhotos(friend: friend))
-    @unknown default:
-        print("add new case")
     }
   }
   

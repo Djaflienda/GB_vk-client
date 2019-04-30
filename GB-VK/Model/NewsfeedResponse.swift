@@ -16,6 +16,7 @@ struct NewsfeedResponse: Codable {
     var items: [NewsfeedItem]
     var profiles: [Profile]
     var groups: [NewsfeedGroup]
+    var nextFrom: String?
 }
 
 protocol ProfileRepresentable {
