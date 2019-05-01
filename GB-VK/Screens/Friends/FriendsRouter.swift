@@ -16,11 +16,11 @@ class FriendsRouter: NSObject, FriendsRoutingLogic {
     
     weak var viewController: FriendsViewController?
     
-  // MARK: Routing
-  
+    // MARK: Routing
+    
     func routeToFriendPhotos(segue: UIStoryboardSegue?) {
         if let _ = segue {
-            
+            //fill this  space if use segues
         } else {
             let storyboard = UIStoryboard(name: "FriendPhotos", bundle: nil)
             let destinationVC = storyboard.instantiateViewController(withIdentifier: "FriendPhotos") as! FriendPhotosViewController

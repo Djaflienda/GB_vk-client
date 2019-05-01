@@ -43,14 +43,10 @@ class RoundShadowView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-//        layoutView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-//        layoutView()
     }
     
     //MARK: -Handlers
@@ -66,17 +62,4 @@ class RoundShadowView: UIView {
     func configureImageView(with image: String) {
         self.containerView.image = UIImage(named: image)
     }
-    
-//    private func layoutView() {
-//        layer.backgroundColor = UIColor.clear.cgColor
-//        containerView.layer.masksToBounds = true
-//        addSubview(containerView)
-//        containerView.frame = bounds
-//        containerView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        containerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-//        containerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-//        containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//        containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//    }
 }

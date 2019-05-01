@@ -20,10 +20,6 @@ struct Sizes: NewsfeedCellSizes {
     var totalHeight: CGFloat
 }
 
-struct Constants {
-
-}
-
 final class NewsfeedLayoutCalculator: NewsfeedCellLayoutCalculatorProtocol {
     
     private let screenWidth: CGFloat
@@ -33,52 +29,33 @@ final class NewsfeedLayoutCalculator: NewsfeedCellLayoutCalculatorProtocol {
     }
     
     func sizes(bodyText: String?, photoAttachment: NewsfeedCellPhotoAttachmentViewModel?, isFullSizedPost: Bool) -> NewsfeedCellSizes {
-        
         var showMoreTextButton = false
-        
-        var bodyLabelFrame = CGRect(origin: CGPoint(x: 10, y: 56),
-                                    size: CGSize.zero)
-        
+        var bodyLabelFrame = CGRect(origin: CGPoint(x: 10, y: 56), size: CGSize.zero)
         if let text = bodyText, !text.isEmpty {
             let width = screenWidth - 20
             var height = text.height(width: width, font: UIFont.systemFont(ofSize: 15))
-            
             let limitHeight = (UIFont.systemFont(ofSize: 15).lineHeight) * CGFloat(8)
-            
             if !isFullSizedPost && height > limitHeight {
                 height = (UIFont.systemFont(ofSize: 15).lineHeight) * CGFloat(6)
                 showMoreTextButton = true
             }
-            
             bodyLabelFrame.size = CGSize(width: width, height: height)
         }
-        
         var moreTextButtonSize = CGSize.zero
-        
         if showMoreTextButton {
             moreTextButtonSize = CGSize(width: 160, height: 30)
         }
-        
         let moreTextButtonOrigin = CGPoint(x: 10, y: bodyLabelFrame.maxY)
-        
         let moreTextButtonFrame = CGRect(origin: moreTextButtonOrigin, size: moreTextButtonSize)
-        
-        
         let postImageViewTop = bodyLabelFrame.size == CGSize.zero ? 64 : moreTextButtonFrame.maxY + 8
-        
-        var postImageViewFrame = CGRect(origin: CGPoint(x: 0, y: postImageViewTop),
-                                        size: CGSize.zero)
+        var postImageViewFrame = CGRect(origin: CGPoint(x: 0, y: postImageViewTop), size: CGSize.zero)
         if let attachment = photoAttachment {
             let ratio = Float(attachment.height) / Float(attachment.width)
             let imageHeight = (screenWidth - 4) * CGFloat(ratio)
             postImageViewFrame.size = CGSize(width: screenWidth - 4, height: imageHeight)
         }
-        
         let bottomViewTop = max(bodyLabelFrame.maxY, postImageViewFrame.maxY)
-//        let bottomViewWidth = max(bodyLabelFrame.width, postImageViewFrame.width)
-        let bottomViewFrame = CGRect(origin: CGPoint(x: 0, y: bottomViewTop + 8), size: CGSize(width: /*postImageViewFrame.size.width*//*bottomViewWidth*/screenWidth - 4, height: 40))
-        
-        
+        let bottomViewFrame = CGRect(origin: CGPoint(x: 0, y: bottomViewTop), size: CGSize(width: screenWidth - 4, height: 40))
         let totalHeight = bottomViewFrame.maxY + 8
         
         return Sizes(bodyLableFrame: bodyLabelFrame, moreTextButtonFrame: moreTextButtonFrame, postImageViewFrame: postImageViewFrame, bottomView: bottomViewFrame, totalHeight: totalHeight)

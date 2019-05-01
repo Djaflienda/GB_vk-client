@@ -17,9 +17,10 @@ class GroupsViewController: UIViewController, GroupsDisplayLogic {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-  var interactor: GroupsBusinessLogic?
-  var router: (NSObjectProtocol & GroupsRoutingLogic)?
+    var interactor: GroupsBusinessLogic?
+    var router: (NSObjectProtocol & GroupsRoutingLogic)?
     private var groupsViewModel = GroupsViewModel(cells: [])
+    private var footerView = FooterView(textColor: .darkGray)
 
   
   // MARK: Setup
@@ -44,6 +45,7 @@ class GroupsViewController: UIViewController, GroupsDisplayLogic {
     super.viewDidLoad()
     setup()
     tableView.register(UINib(nibName: "GroupCell", bundle: nil), forCellReuseIdentifier: GroupCell.reuseID)
+    tableView.tableFooterView = footerView
     interactor?.makeRequest(request: .getGroupsList)
   }
   
@@ -52,6 +54,7 @@ class GroupsViewController: UIViewController, GroupsDisplayLogic {
     case .displayGroups(let viewModel):
         self.groupsViewModel = viewModel
         tableView.reloadData()
+        footerView.setTitle(title: String(groupsViewModel.cells.count) + " groups")
     }
   }
 }
@@ -64,6 +67,7 @@ extension GroupsViewController: UITableViewDelegate {
 
 extension GroupsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(groupsViewModel.cells.count)
         return groupsViewModel.cells.count
     }
     

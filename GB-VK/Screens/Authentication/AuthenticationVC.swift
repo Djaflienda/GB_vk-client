@@ -18,14 +18,11 @@ class AuthenticationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     //MARK: -Handlers
     
     @IBAction func signInButtonPressed(_ sender: UIButton) {
-//        let destinationVC = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-//        present(destinationVC, animated: true, completion: nil)
         authService.wakeUpSession()
     }
 }

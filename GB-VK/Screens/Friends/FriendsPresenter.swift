@@ -13,8 +13,8 @@ protocol FriendsPresentationLogic {
 }
 
 class FriendsPresenter: FriendsPresentationLogic {
-    weak var viewController: FriendsDisplayLogic?
     
+    weak var viewController: FriendsDisplayLogic?
     let sortManager = FriendsService()
     
     func presentData(response: Friends.Model.Response.ResponseType) {

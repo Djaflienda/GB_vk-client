@@ -24,8 +24,6 @@ class FriendCell: UITableViewCell {
 
     func configureCell(with data: FriendsCellViewModel) {
         self.shadowView.configureImageView(with: data.avatarUrlString)
-        
-        
         self.profileNameLabel.attributedText = data.name
     }
 }

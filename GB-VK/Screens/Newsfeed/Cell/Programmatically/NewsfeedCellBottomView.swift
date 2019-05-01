@@ -17,7 +17,7 @@ final class NewsfeedCellBottomView: UIView {
     }()
     
     //0. - likes; 1. - comments; 2. - shares; 3. - views
-    private let views = (0...3).map {_ in UIView()}
+    private let views = (0...3).map { _ in UIView()}
     
     private let images = ["like", "comment", "share", "eye"].map { UIImageView(image: UIImage(named: $0)) }
     
@@ -32,21 +32,14 @@ final class NewsfeedCellBottomView: UIView {
         
         addSubview(stackView)
         stackView.addArrangedSubviews(views: views)
-        views[0].addSubviews(views: [images[0], labels[0]])
-        views[1].addSubviews(views: [images[1], labels[1]])
-        views[2].addSubviews(views: [images[2], labels[2]])
-        views[3].addSubviews(views: [images[3], labels[3]])
+        (0...3).forEach { views[$0].addSubviews(views: [images[$0], labels[$0]])}
         
-        stackView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor)
-        images[0].anchor(centerX: views[0].centerYAnchor, leading: views[0].leadingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 0), size: .init(width: 25, height: 25))
-        images[1].anchor(centerX: views[1].centerYAnchor, leading: views[1].leadingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 0), size: .init(width: 25, height: 25))
-        images[2].anchor(centerX: views[2].centerYAnchor, leading: views[2].leadingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 0), size: .init(width: 25, height: 25))
-        images[3].anchor(centerX: views[3].centerYAnchor, leading: views[3].leadingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 0), size: .init(width: 25, height: 25))
-        
-        labels[0].anchor(centerX: views[0].centerYAnchor, leading: images[0].trailingAnchor, trailing: views[0].trailingAnchor, padding: .init(top: 0, left: 4, bottom: 0, right: 8), size: .init(width: 0, height: 25))
-        labels[1].anchor(centerX: images[1].centerYAnchor, leading: images[1].trailingAnchor, trailing: views[1].trailingAnchor, padding: .init(top: 0, left: 4, bottom: 0, right: 8), size: .init(width: 0, height: 25))
-        labels[2].anchor(centerX: images[2].centerYAnchor, leading: images[2].trailingAnchor, trailing: views[2].trailingAnchor, padding: .init(top: 0, left: 4, bottom: 0, right: 8), size: .init(width: 0, height: 25))
-        labels[3].anchor(centerX: images[3].centerYAnchor, leading: images[3].trailingAnchor, trailing: views[3].trailingAnchor, padding: .init(top: 0, left: 4, bottom: 0, right: 8), size: .init(width: 0, height: 25))
+        stackView.anchor(leading: leadingAnchor, trailing: trailingAnchor, size: .init(width: 0, height: 40))
+
+        (0...3).forEach {
+            images[$0].anchor(top: views[$0].topAnchor, leading: views[$0].leadingAnchor, padding: .init(top: 8, left: 10, bottom: 0, right: 0), size: .init(width: 25, height: 25))
+            labels[$0].anchor(top: images[$0].topAnchor, leading: images[$0].trailingAnchor, trailing: views[$0].trailingAnchor, padding: .init(top: 0, left: 4, bottom: 0, right: 8), size: .init(width: 0, height: 25))
+        }
     }
     
     func configure(with data: NewsfeedCellViewModel) {

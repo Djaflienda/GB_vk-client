@@ -8,16 +8,7 @@
 
 import UIKit
 
-class FooterView: UIView {
-    
-    private var postCountLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = .white
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+class FooterViewWLoader: FooterView {
     
     private var loader: UIActivityIndicatorView = {
        let loader = UIActivityIndicatorView()
@@ -29,9 +20,6 @@ class FooterView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        addSubview(postCountLabel)
-        addSubview(loader)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,16 +28,11 @@ class FooterView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        NSLayoutConstraint.activate([
-            
-            postCountLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            postCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            postCountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+        addSubview(loader)
 
+        NSLayoutConstraint.activate([
             loader.centerXAnchor.constraint(equalTo: centerXAnchor),
             loader.topAnchor.constraint(equalTo: postCountLabel.bottomAnchor, constant: 8)
-            
             ])
     }
     
@@ -57,9 +40,9 @@ class FooterView: UIView {
         loader.startAnimating()
     }
     
-    func setTitle(title: String?) {
+    override func setTitle(title: String?) {
+        super.setTitle(title: title)
         loader.stopAnimating()
-        postCountLabel.text = title
     }
 }
 

@@ -19,7 +19,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     var interactor: NewsfeedBusinessLogic?
     var router: (NSObjectProtocol & NewsfeedRoutingLogic)?
     private var newsfeedViewModel = NewsfeedViewModel(cells: [], footerTitle: nil)
-    private lazy var footerView = FooterView()
+    private lazy var footerView = FooterViewWLoader()
     
     private var refreshControl: UIRefreshControl = {
         let rc = UIRefreshControl()
