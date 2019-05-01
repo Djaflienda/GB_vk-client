@@ -1,5 +1,5 @@
 
-# GeekUniversity VKontakte Client
+# GeekUniversity VKontakte Client (Clean Swift)
 
 Homework for the first quarter at Geek University.
 
