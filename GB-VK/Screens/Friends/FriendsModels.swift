@@ -13,13 +13,13 @@ enum Friends {
   enum Model {
     struct Request {
       enum RequestType {
-        case getFriendsList
+        case getFriendsList(alphabeticallySorted: Bool)
         case getFriendsListFiltered(searchText: String, target: [Friend])
       }
     }
     struct Response {
       enum ResponseType {
-        case presentFrieds(friends: [Friend])
+        case presentFrieds(friends: [Friend], alphabeticallySorted: Bool)
       }
     }
     struct ViewModel {
@@ -39,5 +39,7 @@ struct FriendViewModel {
         var name: NSAttributedString
     }
     
-    let cells: [Cell]
+    var cells = [Cell]()
+    var friendsDictionary = [String: [Cell]]()
+    var friendsSectionTitles = [String]()
 }

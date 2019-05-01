@@ -24,11 +24,11 @@ class FriendsInteractor: FriendsBusinessLogic {
         }
     
         switch request {
-        case .getFriendsList:
-            presenter?.presentData(response: .presentFrieds(friends: friends))
+        case .getFriendsList(let alphabeticallySorted):
+            presenter?.presentData(response: .presentFrieds(friends: friends, alphabeticallySorted: alphabeticallySorted))
         case .getFriendsListFiltered(let searchText, let target):
             searchManager.searchingFilter(for: searchText, in: target)
-            presenter?.presentData(response: .presentFrieds(friends: searchManager.searchingResult))
+            presenter?.presentData(response: .presentFrieds(friends: searchManager.searchingResult, alphabeticallySorted: false))
         }
     }
 }

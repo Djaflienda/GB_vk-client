@@ -44,7 +44,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dVM-HX-hZ3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Friends" id="tej-YK-shr"/>
+                    <navigationItem key="navigationItem" title="Friends" id="tej-YK-shr">
+                        <barButtonItem key="leftBarButtonItem" title="SortFriends" id="hOZ-ZX-7VA">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="sortFriends:" destination="e57-XB-VcH" id="qIf-sV-Uya"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="3P1-EX-jOf" id="u5H-zK-gj6"/>
                         <outlet property="tableView" destination="ljc-pg-hkC" id="Ypu-QW-F7x"/>
