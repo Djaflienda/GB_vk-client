@@ -8,7 +8,7 @@
 
 import Foundation
 
-let friends = [
+let friends: [Friend] = [
     Friend(profileImage: "friend0", profileName: "Slawomira", profileSurname: "Pelikan"),
     Friend(profileImage: "friend1", profileName: "Nuria", profileSurname: "Pelayo"),
     Friend(profileImage: "friend2", profileName: "Gladys", profileSurname: "Kanyinda"),
