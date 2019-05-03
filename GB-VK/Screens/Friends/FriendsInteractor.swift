@@ -9,14 +9,21 @@
 import UIKit
 
 protocol FriendsBusinessLogic {
-  func makeRequest(request: Friends.Model.Request.RequestType)
+    func makeRequest(request: Friends.Model.Request.RequestType)
+    func prepareDataPassing(for userID: Int)
 }
 
-class FriendsInteractor: FriendsBusinessLogic {
+
+protocol FriendsDataStore {
+    var userID: Int? { get set }
+}
+
+class FriendsInteractor: FriendsBusinessLogic, FriendsDataStore {
     
     var presenter: FriendsPresentationLogic?
     var service: FriendsService?
     private var searchManager = SearchingManager<Friend>()
+    var userID: Int?
     
     func makeRequest(request: Friends.Model.Request.RequestType) {
         if service == nil {
@@ -30,5 +37,9 @@ class FriendsInteractor: FriendsBusinessLogic {
             searchManager.searchingFilter(for: searchText, in: target)
             presenter?.presentData(response: .presentFrieds(friends: searchManager.searchingResult, alphabeticallySorted: false))
         }
+    }
+    
+    func prepareDataPassing(for userID: Int) {
+        self.userID = userID
     }
 }

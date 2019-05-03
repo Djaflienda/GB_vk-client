@@ -33,6 +33,7 @@ enum Friends {
 
 struct FriendViewModel {
     struct Cell: FriendsCellViewModel {
+        var userID: Int
         var avatarUrlString: String
         var profileName: String
         var profileSurname: String

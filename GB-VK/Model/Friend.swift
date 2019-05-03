@@ -9,8 +9,9 @@
 import Foundation
 
 struct Friend {
-    
+    let userID: Int
     let profileImage: String
     let profileName: String
     let profileSurname: String
+    let profileImages: [String]
 }

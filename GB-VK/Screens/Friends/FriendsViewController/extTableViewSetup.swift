@@ -11,6 +11,14 @@ import UIKit
 extension FriendsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if !friendsViewModel.cells.isEmpty {
+            let userID = friendsViewModel.cells[indexPath.row].userID
+            interactor?.prepareDataPassing(for: userID)
+        } else {
+            let section = friendsViewModel.friendsSectionTitles[indexPath.section]
+            guard let userID = friendsViewModel.friendsDictionary[section]?[indexPath.row].userID else { return }
+            interactor?.prepareDataPassing(for: userID)
+        }
         router?.routeToFriendPhotos(segue: nil)
     }
     

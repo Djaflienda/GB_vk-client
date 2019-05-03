@@ -18,14 +18,13 @@ class FriendPhotosPresenter: FriendPhotosPresentationLogic {
     func presentData(response: FriendPhotos.Model.Response.ResponseType) {
         switch response {
         case .presentFriendPhotos(let friend):
-            let cell = cellViewModel(from: friend)
-            let viewModel = FriendPhotoViewModel(cells: [cell])
+            let viewModel = cellViewModel(from: friend)
             viewController?.displayData(viewModel: .displayFriendPhotos(viewModel: viewModel))
         }
     }
     
-    private func cellViewModel(from friend: FriendsCellViewModel) -> FriendPhotoViewModel.Cell {
-        return FriendPhotoViewModel.Cell(profileImage: friend.avatarUrlString)
+    private func cellViewModel(from friend: Friend) -> FriendPhotoViewModel {
+        return FriendPhotoViewModel(userID: friend.userID, avatarUrlString: friend.profileImage, profileName: friend.profileName, avatarUrlStrings: /*friend.profileImages*/friendPhotos)
     }
   
 }

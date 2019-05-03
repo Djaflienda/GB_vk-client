@@ -34,7 +34,8 @@ class FriendsService {
     }
 
     private func cellViewModel(from friend: Friend) -> FriendViewModel.Cell {
-        return FriendViewModel.Cell(avatarUrlString: friend.profileImage,
+        return FriendViewModel.Cell(userID: friend.userID,
+                                    avatarUrlString: friend.profileImage,
                                     profileName: friend.profileName,
                                     profileSurname: friend.profileSurname,
                                     name: configureAttributedText(for: friend))

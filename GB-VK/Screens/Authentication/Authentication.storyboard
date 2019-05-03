@@ -100,7 +100,7 @@
         <scene sceneID="dwS-TV-xuV">
             <objects>
                 <viewControllerPlaceholder storyboardName="Animation" id="DsG-0x-kiA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Animation" id="WAB-Ua-543"/>
+                    <tabBarItem key="tabBarItem" title="Gallery" id="WAB-Ua-543"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8wJ-2k-QSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

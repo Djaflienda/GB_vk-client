@@ -12,11 +12,15 @@ protocol FriendPhotosRoutingLogic {
 
 }
 
-class FriendPhotosRouter: NSObject, FriendPhotosRoutingLogic {
+protocol FriendPhotosDataPassing {
+    var dataStore: FriendPhotosDataStore? { get }
+}
+
+class FriendPhotosRouter: NSObject, FriendPhotosRoutingLogic, FriendPhotosDataPassing {
     
 
     weak var viewController: FriendPhotosViewController?
-
+    var dataStore: FriendPhotosDataStore?
 
   // MARK: Routing
   

@@ -13,13 +13,12 @@ enum FriendPhotos {
   enum Model {
     struct Request {
       enum RequestType {
-        //@acc type for test - remove and networking manager..
         case getFriendPhotos
       }
     }
     struct Response {
       enum ResponseType {
-        case presentFriendPhotos(friend: FriendsCellViewModel)
+        case presentFriendPhotos(friend: Friend)
       }
     }
     struct ViewModel {
@@ -30,9 +29,9 @@ enum FriendPhotos {
   }
 }
 
-struct FriendPhotoViewModel {
-    struct Cell: FriendPhotoCellViewModel {
-        var profileImage: String
-    }
-    var cells: [Cell]
+struct FriendPhotoViewModel: FriendPhotoCellViewModel {
+    var userID: Int
+    var avatarUrlString: String
+    var profileName: String
+    var avatarUrlStrings: [String]
 }

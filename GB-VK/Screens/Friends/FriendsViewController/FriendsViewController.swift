@@ -18,7 +18,7 @@ class FriendsViewController: UIViewController, FriendsDisplayLogic {
     @IBOutlet private weak var searchBar: UISearchBar!
     
     var interactor: FriendsBusinessLogic?
-    var router: (NSObjectProtocol & FriendsRoutingLogic)?
+    var router: (NSObjectProtocol & FriendsRoutingLogic & FriendsDataPassing)?
     var friendsViewModel = FriendViewModel()
     var alphabeticallySorted = true
     private var footerView = FooterView(textColor: .darkGray)
@@ -35,6 +35,7 @@ class FriendsViewController: UIViewController, FriendsDisplayLogic {
         interactor.presenter      = presenter
         presenter.viewController  = viewController
         router.viewController     = viewController
+        router.dataStore          = interactor
     }
 
     // MARK: View lifecycle
@@ -63,7 +64,7 @@ class FriendsViewController: UIViewController, FriendsDisplayLogic {
         interactor?.makeRequest(request: .getFriendsList(alphabeticallySorted: alphabeticallySorted))
     }
     
-    @objc private func hideKeyboard() {
-        view.endEditing(true)
-    }
+//    @objc private func hideKeyboard() {
+//        view.endEditing(true)
+//    }
 }

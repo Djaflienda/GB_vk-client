@@ -12,20 +12,26 @@ protocol FriendPhotosBusinessLogic {
   func makeRequest(request: FriendPhotos.Model.Request.RequestType)
 }
 
-class FriendPhotosInteractor: FriendPhotosBusinessLogic {
+protocol FriendPhotosDataStore {
+    var userID: Int? { get set }
+}
 
-  var presenter: FriendPhotosPresentationLogic?
-  var service: FriendPhotosService?
+class FriendPhotosInteractor: FriendPhotosBusinessLogic, FriendPhotosDataStore {
+
+    var presenter: FriendPhotosPresentationLogic?
+    var service: FriendPhotosService?
+    var userID: Int?
   
-  func makeRequest(request: FriendPhotos.Model.Request.RequestType) {
-    if service == nil {
-      service = FriendPhotosService()
+    func makeRequest(request: FriendPhotos.Model.Request.RequestType) {
+        if service == nil {
+            service = FriendPhotosService()
+        }
+        switch request {
+        case .getFriendPhotos:
+            if let user = friends.first(where: {$0.userID == userID}) {
+                presenter?.presentData(response: .presentFriendPhotos(friend: user))
+            }
+        }
     }
-    switch request {
-    case .getFriendPhotos:
-        print()
-//        presenter?.presentData(response: .presentFriendPhotos(friend: friend))
-    }
-  }
-  
+    
 }

@@ -13,44 +13,11 @@ class AnimationViewController: UIViewController {
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var view3: UIView!
-    @IBOutlet weak var image: UIImageView!
     
-    @IBAction func imageTapped(_ sender: UIButton) {
-//        UIView.animate(withDuration: 0.1, animations: {
-//            self.image.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-//        }) { (_) in
-//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: [], animations: {
-//                self.image.transform = .identity
-//            }, completion: nil)
-//        }
-    }
-    
-    @objc func tapped() {
-        UIView.animate(withDuration: 0.1, animations: {
-            self.image.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        }) { (_) in
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: [], animations: {
-                self.image.transform = .identity
-            }, completion: nil)
-        }
-    }
+    @IBOutlet weak var collectionView: UICollectionView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let tapGR = UITapGestureRecognizer(target: self, action: #selector(tapped))
-        image.addGestureRecognizer(tapGR)
-        image.isUserInteractionEnabled = true
-//        UIView.animate(withDuration: 0.6, delay: 0, options: [.repeat], animations: {
-//            self.view1.alpha = 0.1
-//        }) { (true) in
-//            UIView.animate(withDuration: 0.6, delay: 0, options: [.repeat], animations: {
-//                self.view2.alpha = 0.1
-//            }, completion: { (true) in
-//                UIView.animate(withDuration: 0.6, delay: 0, options: [.repeat], animations: {
-//                    self.view3.alpha = 0.1
-//                }, completion: nil)
-//            })
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,34 +37,42 @@ class AnimationViewController: UIViewController {
 
         })
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
+extension AnimationViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(collectionView.cellForItem(at: indexPath)?.frame)
+        print(collectionView.frame)
+    }
+}
 
-
-class LoadingIndicator: UIView {
+class TestCVCell: UICollectionViewCell {
     
-    private let indicators: [UIView] = (0...2).map { _ in
-        let c = UIView()
-        c.backgroundColor = .gray
-        return c
+    static let reuseID = "TestCVCell"
+    @IBOutlet weak var image: UIImageView!
+    
+    func configure(image: String) {
+        self.image.image = UIImage(named: image)
+    }
+}
+
+extension AnimationViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return friendPhotos.count
     }
     
-    static func showIndicator() {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCVCell.reuseID, for: indexPath) as! TestCVCell
+        cell.configure(image: friendPhotos[indexPath.row])
         
+        return cell
     }
-    
-    static func removeIndicator() {}
 }
+
+extension AnimationViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width / 3 - 8
+        return CGSize(width: width, height: width)
+    }
+}
+
