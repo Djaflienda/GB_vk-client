@@ -62,9 +62,40 @@ class FriendPhotosViewController: UIViewController, FriendPhotosDisplayLogic {
             title = friendPhotosViewModel.profileName
         }
     }
+    
+    @objc func showPhoto(startPosition: CGRect, index: Int) {
+        let photo = UIImageView(frame: startPosition)
+        photo.image = UIImage(named: friendPhotosViewModel.avatarUrlStrings[index])
+        collectionView.isHidden = true
+        view.addSubview(photo)
+        UIView.animate(withDuration: 0.5) {
+            photo.frame = .init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
+            photo.center = self.view.center
+        }
+//        let tapGR = UITapGestureRecognizer(target: self, action: #selector(dismissPhoto))
+    }
+    
+    @objc func dismissPhoto(sender: UITapGestureRecognizer) {
+       
+    }
 }
 
-extension FriendPhotosViewController: UICollectionViewDelegate {}
+extension FriendPhotosViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let targetFrame = collectionView.cellForItem(at: indexPath)?.frame
+        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+        guard let topBarHeight =  navigationController?.navigationBar.frame.height,
+            let xPosition = targetFrame?.origin.x,
+            let yPosition = targetFrame?.origin.y,
+            let width = targetFrame?.width,
+            let height = targetFrame?.height else { return }
+        let startFrame: CGRect = .init(x: xPosition, y: yPosition + statusBarHeight + topBarHeight, width: width, height: height)
+        showPhoto(startPosition: startFrame, index: indexPath.row)
+        
+        
+    }
+}
 
 extension FriendPhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

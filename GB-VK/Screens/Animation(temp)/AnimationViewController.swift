@@ -43,6 +43,9 @@ extension AnimationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(collectionView.cellForItem(at: indexPath)?.frame)
         print(collectionView.frame)
+        let topBarHeight = UIApplication.shared.statusBarFrame.size.height +
+            (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        print(topBarHeight)
     }
 }
 

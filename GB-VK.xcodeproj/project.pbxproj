@@ -244,7 +244,6 @@
 				FA4583112272015900A2E725 /* Authentication */,
 				FA45833C2273744300A2E725 /* Friends */,
 				FA45836E2276C9F600A2E725 /* FriendPhotos */,
-				FA5CEFD5227B542F009579ED /* FriendPhotos1 */,
 				FA4583502274375E00A2E725 /* Groups */,
 				FA45832422730BBE00A2E725 /* Newsfeed */,
 			);
@@ -393,13 +392,6 @@
 				FA5CEFCD2279C4C2009579ED /* extSearchBar.swift */,
 			);
 			path = FriendsViewController;
-			sourceTree = "<group>";
-		};
-		FA5CEFD5227B542F009579ED /* FriendPhotos1 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FriendPhotos1;
 			sourceTree = "<group>";
 		};
 		FA5D56EA2259CF95000FAEF6 /* Model */ = {
